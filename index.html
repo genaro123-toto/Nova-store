@@ -10,16 +10,13 @@
 
 *{
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body{
 margin:0;
+background:#f7f7f7;
 color:#222;
-background-image:url("imagenes/fondo.jpg");
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
 }
 
 /* HEADER */
@@ -31,53 +28,48 @@ padding:20px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-position:sticky;
-top:0;
-z-index:10;
 }
 
 .logo{
-font-size:28px;
+font-size:26px;
 font-weight:bold;
 }
-
 
 #botonCarrito{
-background:#ff9800;
+background:#00c853;
 border:none;
-padding:12px 18px;
-border-radius:20px;
+padding:14px 20px;
+border-radius:30px;
 cursor:pointer;
 font-weight:bold;
+font-size:16px;
 }
-
-
-/* MENU */
-
-nav{
-background:#222;
-padding:12px;
-text-align:center;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:15px;
-}
-
 
 /* BANNER */
 
 .banner{
-background:linear-gradient(90deg,#ff9800,#ff5722);
-color:white;
-padding:20px;
+background:#e0e0e0;
 text-align:center;
+padding:20px;
 font-size:20px;
 font-weight:bold;
 }
 
+/* ZONA VIDEO */
+
+.video-box{
+margin:30px auto;
+width:90%;
+max-width:800px;
+height:250px;
+background:#ddd;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:15px;
+color:#666;
+font-size:18px;
+}
 
 /* BUSCADOR */
 
@@ -85,31 +77,12 @@ font-weight:bold;
 display:block;
 width:90%;
 max-width:600px;
-margin:25px auto;
+margin:20px auto;
 padding:15px;
-font-size:17px;
+font-size:16px;
 border-radius:10px;
 border:1px solid #ccc;
 }
-
-
-/* CATEGORIAS */
-
-.categorias{
-text-align:center;
-padding:10px;
-}
-
-.categorias button{
-margin:5px;
-padding:10px 15px;
-border:none;
-border-radius:20px;
-cursor:pointer;
-background:#111;
-color:white;
-}
-
 
 /* PRODUCTOS */
 
@@ -117,38 +90,78 @@ color:white;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
-padding:20px;
+padding:30px;
 }
-
 
 .producto{
 background:white;
 border-radius:15px;
 padding:15px;
 text-align:center;
-box-shadow:0 5px 15px #0003;
+box-shadow:0 4px 10px #0001;
 transition:.3s;
+cursor:pointer;
 }
-
 
 .producto:hover{
 transform:translateY(-5px);
 }
 
-
 .producto img{
 width:100%;
-height:200px;
+height:180px;
 object-fit:cover;
 border-radius:10px;
 }
 
-
-.precio{
-font-size:22px;
-font-weight:bold;
+.producto h3{
+margin:10px 0;
 }
 
+/* CARRITO GRANDE */
+
+#ventanaCarrito{
+
+position:fixed;
+right:0;
+top:0;
+
+width:340px;
+height:100vh;
+
+background:white;
+
+box-shadow:-5px 0 20px #0003;
+
+padding:20px;
+
+display:none;
+
+overflow:auto;
+
+}
+
+#ventanaCarrito h2{
+margin-top:0;
+}
+
+.item{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+}
+
+.item img{
+width:60px;
+height:60px;
+border-radius:10px;
+}
+
+.item button{
+margin-top:5px;
+}
+
+/* BOTONES */
 
 .boton{
 width:100%;
@@ -160,596 +173,141 @@ border-radius:10px;
 cursor:pointer;
 }
 
-
-/* CARRITO */
-
-#ventanaCarrito{
-
-display:none;
-
-position:fixed;
-right:20px;
-top:80px;
-
-background:white;
-
-width:350px;
-
-max-height:500px;
-
-overflow:auto;
-
-padding:20px;
-
-border-radius:15px;
-
-box-shadow:0 5px 20px #0005;
-
-z-index:20;
-
-}
-
-
-.item{
-border-bottom:1px solid #ddd;
-padding:10px 0;
-}
-
-
-.item button{
-margin:3px;
-cursor:pointer;
-}
-
-
-.eliminar{
-background:red;
-color:white;
-border:none;
-border-radius:5px;
-}
-
-
-.cerrar{
-background:#111;
-color:white;
-border:none;
-padding:10px;
-border-radius:10px;
-cursor:pointer;
-}
-
-
-
 /* WHATSAPP */
 
 .whatsapp{
-
 position:fixed;
-
 bottom:20px;
-
 left:20px;
-
 background:#25d366;
-
 color:white;
-
 padding:15px;
-
 border-radius:50px;
-
 text-decoration:none;
-
 font-weight:bold;
-
-}
-
-
-/* CELULAR */
-
-@media(max-width:600px){
-
-header{
-flex-direction:column;
-gap:10px;
-}
-
-#ventanaCarrito{
-
-width:90%;
-right:5%;
-
-}
-
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
 
-<div class="logo">
-🛒 Nova Store
-</div>
+<div class="logo">🛒 Nova Store</div>
 
 <button id="botonCarrito" onclick="abrirCarrito()">
-Carrito 🛒 (<span id="contador">0</span>)
+🛒 Carrito (<span id="contador">0</span>)
 </button>
 
 </header>
 
-
-<nav>
-
-<a href="#">Inicio</a>
-<a href="#productos">Productos</a>
-<a href="#">Contacto</a>
-
-</nav>
-
-
 <div class="banner">
-
-🔥 OFERTAS DE HOY - ENVÍOS GRATIS 🔥
-
+🔥 20% DE DESCUENTO EN TODO 🔥
 </div>
 
-
-<input 
-id="buscador"
-placeholder="🔎 Buscar productos..."
-onkeyup="buscar()"
->
-
-
-<div class="categorias">
-
-<button onclick="filtrar('todos')">
-Todos
-</button>
-
-<button onclick="filtrar('tecnologia')">
-Tecnología
-</button>
-
-<button onclick="filtrar('accesorios')">
-Accesorios
-</button>
-
+<!-- VIDEO -->
+<div class="video-box">
+(Acá después vas a poner tu video)
 </div>
 
+<input id="buscador" placeholder="🔎 Buscar productos...">
 
+<!-- PRODUCTOS ABAJO -->
+<div class="productos">
 
-<div class="productos" id="productos">
-<div class="producto" data-categoria="tecnologia" data-nombre="reloj inteligente">
-
+<div class="producto" onclick="agregar('Reloj Inteligente',20000)">
 <img src="https://via.placeholder.com/300">
-
 <h3>Reloj Inteligente</h3>
-
-<p class="precio">$20.000</p>
-
-<button class="boton" onclick="agregarProducto('Reloj Inteligente',20000)">
-Agregar al carrito
-</button>
-
 </div>
 
-
-
-<div class="producto" data-categoria="tecnologia" data-nombre="auriculares bluetooth">
-
+<div class="producto" onclick="agregar('Auriculares Bluetooth',20000)">
 <img src="https://via.placeholder.com/300">
-
 <h3>Auriculares Bluetooth</h3>
-
-<p class="precio">$15.000</p>
-
-<button class="boton" onclick="agregarProducto('Auriculares Bluetooth',15000)">
-Agregar al carrito
-</button>
-
 </div>
 
-
-
-
-<div class="producto" data-categoria="tecnologia" data-nombre="teclado gamer">
-
+<div class="producto" onclick="agregar('Teclado Gamer',60000)">
 <img src="https://via.placeholder.com/300">
-
 <h3>Teclado Gamer</h3>
-
-<p class="precio">$30.000</p>
-
-<button class="boton" onclick="agregarProducto('Teclado Gamer',30000)">
-Agregar al carrito
-</button>
-
 </div>
 
-
-
-
-<div class="producto" data-categoria="accesorios" data-nombre="funda celular">
-
+<div class="producto" onclick="agregar('Funda Celular',10000)">
 <img src="https://via.placeholder.com/300">
-
 <h3>Funda Celular</h3>
-
-<p class="precio">$5.000</p>
-
-<button class="boton" onclick="agregarProducto('Funda Celular',5000)">
-Agregar al carrito
-</button>
-
 </div>
 
-
-
-<div class="producto" data-categoria="accesorios" data-nombre="cargador rapido">
-
+<div class="producto" onclick="agregar('Cargador Rápido',8000)">
 <img src="https://via.placeholder.com/300">
-
 <h3>Cargador Rápido</h3>
-
-<p class="precio">$8.000</p>
-
-<button class="boton" onclick="agregarProducto('Cargador Rápido',8000)">
-Agregar al carrito
-</button>
-
 </div>
 
-
-
+<div class="producto" onclick="agregar('Mousepad Gamer',6000)">
+<img src="https://via.placeholder.com/300">
+<h3>Mousepad Gamer</h3>
 </div>
 
-
+</div>
 
 <!-- CARRITO -->
 
 <div id="ventanaCarrito">
 
-<button class="cerrar" onclick="cerrarCarrito()">
-Cerrar
-</button>
+<h2>🛒 Tu carrito</h2>
 
+<div id="lista"></div>
 
-<h2>
-🛒 Tu carrito
-</h2>
+<h3>Total: $<span id="total">0</span></h3>
 
-
-<div id="listaCarrito"></div>
-
-
-<h3>
-Total: $<span id="total">0</span>
-</h3>
-
-
-<button onclick="vaciarCarrito()">
-Vaciar carrito
-</button>
-
+<button onclick="cerrarCarrito()">Cerrar</button>
 
 </div>
 
+<a class="whatsapp" href="#">WhatsApp</a>
 
-
-<a class="whatsapp" href="#">
-WhatsApp
-</a>
 <script>
 
-let carrito = JSON.parse(localStorage.getItem("carritoNova")) || [];
+let carrito=[];
 
-
-// GUARDAR
-
-function guardar(){
-
-localStorage.setItem(
-"carritoNova",
-JSON.stringify(carrito)
-);
-
+function agregar(nombre,precio){
+carrito.push({nombre,precio});
+mostrar();
 }
 
-
-
-// ACTUALIZAR CARRITO
-
-function actualizarCarrito(){
-
-let lista = document.getElementById("listaCarrito");
-
+function mostrar(){
+let lista=document.getElementById("lista");
 lista.innerHTML="";
 
 let total=0;
 
-let contador=0;
-
-
-
-carrito.forEach((producto,index)=>{
-
-
+carrito.forEach(p=>{
 let div=document.createElement("div");
-
 div.className="item";
 
-
 div.innerHTML=`
-
-<b>${producto.nombre}</b><br>
-
-Cantidad:
-
-<button onclick="cambiarCantidad(${index},-1)">
--
-</button>
-
-
-${producto.cantidad}
-
-
-<button onclick="cambiarCantidad(${index},1)">
-+
-</button>
-
-
-<br>
-
-$${producto.precio * producto.cantidad}
-
-
-<button class="eliminar" onclick="eliminarProducto(${index})">
-Eliminar
-</button>
-
+<img src="https://via.placeholder.com/100">
+<div>
+<b>${p.nombre}</b><br>
+$${p.precio}
+</div>
 `;
 
-
 lista.appendChild(div);
-
-
-
-total += producto.precio * producto.cantidad;
-
-
-contador += producto.cantidad;
-
-
+total+=p.precio;
 });
-
-
 
 document.getElementById("total").textContent=total;
-
-document.getElementById("contador").textContent=contador;
-
-
+document.getElementById("contador").textContent=carrito.length;
 }
-
-
-
-// AGREGAR
-
-function agregarProducto(nombre,precio){
-
-
-let existe = carrito.find(
-producto=>producto.nombre===nombre
-);
-
-
-
-if(existe){
-
-existe.cantidad++;
-
-}
-
-else{
-
-
-carrito.push({
-
-nombre:nombre,
-
-precio:precio,
-
-cantidad:1
-
-});
-
-
-}
-
-
-
-guardar();
-
-actualizarCarrito();
-
-
-}
-
-
-
-// CAMBIAR CANTIDAD
-
-function cambiarCantidad(index,cambio){
-
-
-carrito[index].cantidad += cambio;
-
-
-if(carrito[index].cantidad <= 0){
-
-carrito.splice(index,1);
-
-}
-
-
-guardar();
-
-actualizarCarrito();
-
-
-}
-
-
-
-// ELIMINAR
-
-function eliminarProducto(index){
-
-
-carrito.splice(index,1);
-
-
-guardar();
-
-actualizarCarrito();
-
-
-}
-
-
-
-// VACIAR
-
-function vaciarCarrito(){
-
-
-carrito=[];
-
-
-guardar();
-
-actualizarCarrito();
-
-
-}
-
-
-
-// ABRIR Y CERRAR CARRITO
 
 function abrirCarrito(){
-
 document.getElementById("ventanaCarrito").style.display="block";
-
 }
-
 
 function cerrarCarrito(){
-
 document.getElementById("ventanaCarrito").style.display="none";
-
 }
-
-
-
-// BUSCADOR
-
-function buscar(){
-
-
-let texto=document
-.getElementById("buscador")
-.value
-.toLowerCase();
-
-
-
-let productos=document.querySelectorAll(".producto");
-
-
-
-productos.forEach(producto=>{
-
-
-let nombre=producto
-.getAttribute("data-nombre")
-.toLowerCase();
-
-
-
-if(nombre.includes(texto)){
-
-producto.style.display="block";
-
-}
-
-else{
-
-producto.style.display="none";
-
-}
-
-
-});
-
-
-}
-
-
-
-// FILTROS
-
-function filtrar(categoria){
-
-
-let productos=document.querySelectorAll(".producto");
-
-
-
-productos.forEach(producto=>{
-
-
-if(categoria=="todos"){
-
-producto.style.display="block";
-
-}
-
-else if(producto.dataset.categoria==categoria){
-
-producto.style.display="block";
-
-}
-
-else{
-
-producto.style.display="none";
-
-}
-
-
-});
-
-
-}
-
-
-
-// CARGAR AL INICIAR
-
-actualizarCarrito();
-
 
 </script>
-
 
 </body>
 </html>
