@@ -1,123 +1,53 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
+
   <title>Nova Store</title>
 
   <style>
+
     body {
+
       font-family: Arial;
+
       margin: 0;
+
       background: #f5f5f5;
+
     }
 
     header {
+
       background: black;
+
       color: white;
+
       padding: 15px;
+
       text-align: center;
+
       font-size: 24px;
+
     }
 
     .banner {
+
       background: orange;
-      color: black;
+
       text-align: center;
+
       padding: 10px;
+
       font-weight: bold;
+
     }
 
     .productos {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      padding: 20px;
-    }
 
-    .producto {
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .producto img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .boton {
-      background: black;
-      color: white;
-      padding: 10px;
-      margin-top: 10px;
-      cursor: pointer;
-      border: none;
-    }
-
-    #carrito {
-      background: white;
-      padding: 15px;
-      margin: 20px;
-      border-radius: 10px;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>Nova Store</header>
-
-<div class="banner">🔥Ofertas de hoy-20% de descuento🔥</div>
-
-<div id="carrito">
-  <h2>Carrito</h2>
-  <ul id="lista-carrito"></ul>
-  <p>Total: $<span id="total">0</span></p>
-</div>
-
-<div class="productos">
-
-  <div class="producto">
-    <img src="https://via.placeholder.com/200">
-    <h3>Reloj inteligente</h3>
-    <p>$20.000</p>
-    <button class="boton" onclick="agregarProducto('Reloj inteligente', 20000)">Comprar</button>
-  </div>
-
-  <div class="producto">
-    <img src="https://via.placeholder.com/200">
-    <h3>Funda para celular</h3>
-    <p>$5.000</p>
-    <button class="boton" onclick="agregarProducto('Funda para celular', 5000)">Comprar</button>
-  </div>
-
-  <div class="producto">
-    <img src="https://via.placeholder.com/200">
-    <h3>Auriculares inalámbricos</h3>
-    <p>$15.000</p>
-    <button class="boton" onclick="agregarProducto('Auriculares inalámbricos', 15000)">Comprar</button>
-  </div>
-
-</div>
-
-<script>
-let total = 0;
-
-function agregarProducto(nombre, precio) {
-  alert(nombre + " agregado al carrito");
-
-  let lista = document.getElementById("lista-carrito");
-
-  let item = document.createElement("li");
-  item.textContent = nombre + " - $" + precio;
-
-  lista.appendChild(item);
-
-  total = total + precio;
-  document.getElementById("total").textContent = total;
-}
-</script>
-
-</body>
-</html>
+      grid-template-columns:
