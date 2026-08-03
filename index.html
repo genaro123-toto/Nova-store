@@ -54,25 +54,31 @@
 
 <header>Nova Store</header>
 
-<div class="banner">🔥Ofertas de hoy - descuento del 20%🔥</div>
+<div class="banner">🔥 Ofertas de hoy - 20% de descuento🔥</div>
 
 <div class="productos">
 
+ <div class="producto">
+  <img src="https://via.placeholder.com/200">
+  <h3>Reloj inteligente</h3>
+  <p>$20.000</p>
   <button onclick="agregarProducto('Reloj inteligente')">Comprar</button>
-
- 
-  <button onclick="agregarProducto('Funda para celular')">Comprar</button>
-
-  <button onclick="agregarProducto('Auriculares inalámbricos')">Comprar</button>
-  
 </div>
-<script>
-let carrito = [];
+  <div class="producto">
+    <img src="https://via.placeholder.com/200">
+    <h3>Funda para celular</h3>
+    <p>$5.000</p>
+    <div class="boton">Comprar</div>
+  </div>
 
-function agregarProducto(nombre) {
-  carrito.push(nombre);
-  alert(nombre + " agregado al carrito");
-}
-</script>
+  <div class="producto">
+    <img src="https://via.placeholder.com/200">
+    <h3>Auriculares inalámbricos</h3>
+    <p>$15.000</p>
+    <div class="boton">Comprar</div>
+  </div>
+
+</div>
+
 </body>
 </html>
