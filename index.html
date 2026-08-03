@@ -68,11 +68,12 @@
 
 <header>Nova Store</header>
 
-<div class="banner">🔥Ofertas de hoy - 20% de descuento🔥</div>
+<div class="banner">🔥 Ofertas de hoy - Envíos gratis 🔥</div>
 
 <div id="carrito">
   <h2>Carrito</h2>
   <ul id="lista-carrito"></ul>
+  <p>Total: $<span id="total">0</span></p>
 </div>
 
 <div class="productos">
@@ -81,39 +82,40 @@
     <img src="https://via.placeholder.com/200">
     <h3>Reloj inteligente</h3>
     <p>$20.000</p>
-    <button class="boton" onclick="agregarProducto('Reloj inteligente')">Comprar</button>
+    <button class="boton" onclick="agregarProducto('Reloj inteligente', 20000)">Comprar</button>
   </div>
 
   <div class="producto">
     <img src="https://via.placeholder.com/200">
     <h3>Funda para celular</h3>
     <p>$5.000</p>
-    <button class="boton" onclick="agregarProducto('Funda para celular')">Comprar</button>
+    <button class="boton" onclick="agregarProducto('Funda para celular', 5000)">Comprar</button>
   </div>
 
   <div class="producto">
     <img src="https://via.placeholder.com/200">
     <h3>Auriculares inalámbricos</h3>
     <p>$15.000</p>
-    <button class="boton" onclick="agregarProducto('Auriculares inalámbricos')">Comprar</button>
+    <button class="boton" onclick="agregarProducto('Auriculares inalámbricos', 15000)">Comprar</button>
   </div>
 
 </div>
 
 <script>
-let carrito = [];
+let total = 0;
 
-function agregarProducto(nombre) {
-  carrito.push(nombre);
-
+function agregarProducto(nombre, precio) {
   alert(nombre + " agregado al carrito");
 
   let lista = document.getElementById("lista-carrito");
 
   let item = document.createElement("li");
-  item.textContent = nombre;
+  item.textContent = nombre + " - $" + precio;
 
   lista.appendChild(item);
+
+  total = total + precio;
+  document.getElementById("total").textContent = total;
 }
 </script>
 
