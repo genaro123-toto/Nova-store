@@ -2,193 +2,752 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Nova Store</title>
 
 <style>
-body { font-family: Arial; margin:0; background:#f5f5f5; }
 
-header {
-  background:black;
-  color:white;
-  padding:15px;
-  text-align:center;
-  font-size:24px;
+*{
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
 }
 
-.banner {
-  background:orange;
-  text-align:center;
-  padding:10px;
-  font-weight:bold;
+body{
+margin:0;
+background:#f5f5f5;
+color:#222;
 }
 
-#buscador {
-  width:90%;
-  margin:15px auto;
-  display:block;
-  padding:10px;
-  font-size:16px;
+
+/* HEADER */
+
+header{
+background:#111;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:10;
 }
 
-.productos {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:20px;
-  padding:20px;
+.logo{
+font-size:28px;
+font-weight:bold;
 }
 
-.producto {
-  background:white;
-  padding:15px;
-  border-radius:10px;
-  text-align:center;
+
+#botonCarrito{
+background:#ff9800;
+border:none;
+padding:12px 18px;
+border-radius:20px;
+cursor:pointer;
+font-weight:bold;
 }
 
-.producto img { width:100%; }
 
-.boton {
-  background:black;
-  color:white;
-  padding:10px;
-  margin-top:10px;
-  cursor:pointer;
-  border:none;
+/* MENU */
+
+nav{
+background:#222;
+padding:12px;
+text-align:center;
 }
 
-#carrito {
-  background:white;
-  padding:15px;
-  margin:20px;
-  border-radius:10px;
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
 }
 
-.eliminar {
-  background:red;
-  color:white;
-  border:none;
-  cursor:pointer;
-  margin-left:5px;
+
+/* BANNER */
+
+.banner{
+background:linear-gradient(90deg,#ff9800,#ff5722);
+color:white;
+padding:20px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
 }
 
-.cantidad {
-  margin-left:5px;
+
+/* BUSCADOR */
+
+#buscador{
+display:block;
+width:90%;
+max-width:600px;
+margin:25px auto;
+padding:15px;
+font-size:17px;
+border-radius:10px;
+border:1px solid #ccc;
 }
+
+
+/* CATEGORIAS */
+
+.categorias{
+text-align:center;
+padding:10px;
+}
+
+.categorias button{
+margin:5px;
+padding:10px 15px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+background:#111;
+color:white;
+}
+
+
+/* PRODUCTOS */
+
+.productos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+
+.producto{
+background:white;
+border-radius:15px;
+padding:15px;
+text-align:center;
+box-shadow:0 5px 15px #0003;
+transition:.3s;
+}
+
+
+.producto:hover{
+transform:translateY(-5px);
+}
+
+
+.producto img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+
+.precio{
+font-size:22px;
+font-weight:bold;
+}
+
+
+.boton{
+width:100%;
+padding:12px;
+border:none;
+background:#111;
+color:white;
+border-radius:10px;
+cursor:pointer;
+}
+
+
+/* CARRITO */
+
+#ventanaCarrito{
+
+display:none;
+
+position:fixed;
+right:20px;
+top:80px;
+
+background:white;
+
+width:350px;
+
+max-height:500px;
+
+overflow:auto;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0 5px 20px #0005;
+
+z-index:20;
+
+}
+
+
+.item{
+border-bottom:1px solid #ddd;
+padding:10px 0;
+}
+
+
+.item button{
+margin:3px;
+cursor:pointer;
+}
+
+
+.eliminar{
+background:red;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+
+.cerrar{
+background:#111;
+color:white;
+border:none;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+
+
+/* WHATSAPP */
+
+.whatsapp{
+
+position:fixed;
+
+bottom:20px;
+
+left:20px;
+
+background:#25d366;
+
+color:white;
+
+padding:15px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:bold;
+
+}
+
+
+/* CELULAR */
+
+@media(max-width:600px){
+
+header{
+flex-direction:column;
+gap:10px;
+}
+
+#ventanaCarrito{
+
+width:90%;
+right:5%;
+
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<header>Nova Store</header>
-<div class="banner">🔥 Ofertas de hoy - Envíos gratis 🔥</div>
 
-<input id="buscador" placeholder="Buscar productos..." onkeyup="buscar()">
+<header>
 
-<div id="carrito">
-<h2>Carrito</h2>
-<ul id="lista-carrito"></ul>
-<p>Total: $<span id="total">0</span></p>
-<button onclick="vaciarCarrito()">Vaciar carrito</button>
+<div class="logo">
+🛒 Nova Store
 </div>
+
+<button id="botonCarrito" onclick="abrirCarrito()">
+Carrito 🛒 (<span id="contador">0</span>)
+</button>
+
+</header>
+
+
+<nav>
+
+<a href="#">Inicio</a>
+<a href="#productos">Productos</a>
+<a href="#">Contacto</a>
+
+</nav>
+
+
+<div class="banner">
+
+🔥 OFERTAS DE HOY - ENVÍOS GRATIS 🔥
+
+</div>
+
+
+<input 
+id="buscador"
+placeholder="🔎 Buscar productos..."
+onkeyup="buscar()"
+>
+
+
+<div class="categorias">
+
+<button onclick="filtrar('todos')">
+Todos
+</button>
+
+<button onclick="filtrar('tecnologia')">
+Tecnología
+</button>
+
+<button onclick="filtrar('accesorios')">
+Accesorios
+</button>
+
+</div>
+
+
 
 <div class="productos" id="productos">
+<div class="producto" data-categoria="tecnologia" data-nombre="reloj inteligente">
 
-<div class="producto" data-nombre="reloj">
-<img src="https://via.placeholder.com/200">
-<h3>Reloj inteligente</h3>
-<p>$20000</p>
-<button class="boton" onclick="agregarProducto('Reloj inteligente',20000)">Comprar</button>
-</div>
+<img src="https://via.placeholder.com/300">
 
-<div class="producto" data-nombre="funda">
-<img src="https://via.placeholder.com/200">
-<h3>Funda celular</h3>
-<p>$5000</p>
-<button class="boton" onclick="agregarProducto('Funda celular',5000)">Comprar</button>
-</div>
+<h3>Reloj Inteligente</h3>
 
-<div class="producto" data-nombre="auriculares">
-<img src="https://via.placeholder.com/200">
-<h3>Auriculares</h3>
-<p>$15000</p>
-<button class="boton" onclick="agregarProducto('Auriculares',15000)">Comprar</button>
-</div>
+<p class="precio">$20.000</p>
 
-<div class="producto" data-nombre="teclado">
-<img src="https://via.placeholder.com/200">
-<h3>Teclado gamer</h3>
-<p>$30000</p>
-<button class="boton" onclick="agregarProducto('Teclado gamer',30000)">Comprar</button>
-</div>
+<button class="boton" onclick="agregarProducto('Reloj Inteligente',20000)">
+Agregar al carrito
+</button>
 
 </div>
 
+
+
+<div class="producto" data-categoria="tecnologia" data-nombre="auriculares bluetooth">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Auriculares Bluetooth</h3>
+
+<p class="precio">$15.000</p>
+
+<button class="boton" onclick="agregarProducto('Auriculares Bluetooth',15000)">
+Agregar al carrito
+</button>
+
+</div>
+
+
+
+
+<div class="producto" data-categoria="tecnologia" data-nombre="teclado gamer">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Teclado Gamer</h3>
+
+<p class="precio">$30.000</p>
+
+<button class="boton" onclick="agregarProducto('Teclado Gamer',30000)">
+Agregar al carrito
+</button>
+
+</div>
+
+
+
+
+<div class="producto" data-categoria="accesorios" data-nombre="funda celular">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Funda Celular</h3>
+
+<p class="precio">$5.000</p>
+
+<button class="boton" onclick="agregarProducto('Funda Celular',5000)">
+Agregar al carrito
+</button>
+
+</div>
+
+
+
+<div class="producto" data-categoria="accesorios" data-nombre="cargador rapido">
+
+<img src="https://via.placeholder.com/300">
+
+<h3>Cargador Rápido</h3>
+
+<p class="precio">$8.000</p>
+
+<button class="boton" onclick="agregarProducto('Cargador Rápido',8000)">
+Agregar al carrito
+</button>
+
+</div>
+
+
+
+</div>
+
+
+
+<!-- CARRITO -->
+
+<div id="ventanaCarrito">
+
+<button class="cerrar" onclick="cerrarCarrito()">
+Cerrar
+</button>
+
+
+<h2>
+🛒 Tu carrito
+</h2>
+
+
+<div id="listaCarrito"></div>
+
+
+<h3>
+Total: $<span id="total">0</span>
+</h3>
+
+
+<button onclick="vaciarCarrito()">
+Vaciar carrito
+</button>
+
+
+</div>
+
+
+
+<a class="whatsapp" href="#">
+WhatsApp
+</a>
 <script>
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-function guardar() {
-  localStorage.setItem("carrito", JSON.stringify(carrito));
+let carrito = JSON.parse(localStorage.getItem("carritoNova")) || [];
+
+
+// GUARDAR
+
+function guardar(){
+
+localStorage.setItem(
+"carritoNova",
+JSON.stringify(carrito)
+);
+
 }
 
-function render() {
-  let lista = document.getElementById("lista-carrito");
-  lista.innerHTML = "";
-  let total = 0;
 
-  carrito.forEach((p, i) => {
-    let li = document.createElement("li");
 
-    li.innerHTML = p.nombre + " x" + p.cantidad + " - $" + (p.precio*p.cantidad) +
-      ' <button onclick="cambiarCantidad('+i+',1)">+</button>' +
-      ' <button onclick="cambiarCantidad('+i+',-1)">-</button>' +
-      ' <button class="eliminar" onclick="eliminar('+i+')">X</button>';
+// ACTUALIZAR CARRITO
 
-    lista.appendChild(li);
-    total += p.precio * p.cantidad;
-  });
+function actualizarCarrito(){
 
-  document.getElementById("total").textContent = total;
+let lista = document.getElementById("listaCarrito");
+
+lista.innerHTML="";
+
+let total=0;
+
+let contador=0;
+
+
+
+carrito.forEach((producto,index)=>{
+
+
+let div=document.createElement("div");
+
+div.className="item";
+
+
+div.innerHTML=`
+
+<b>${producto.nombre}</b><br>
+
+Cantidad:
+
+<button onclick="cambiarCantidad(${index},-1)">
+-
+</button>
+
+
+${producto.cantidad}
+
+
+<button onclick="cambiarCantidad(${index},1)">
++
+</button>
+
+
+<br>
+
+$${producto.precio * producto.cantidad}
+
+
+<button class="eliminar" onclick="eliminarProducto(${index})">
+Eliminar
+</button>
+
+`;
+
+
+lista.appendChild(div);
+
+
+
+total += producto.precio * producto.cantidad;
+
+
+contador += producto.cantidad;
+
+
+});
+
+
+
+document.getElementById("total").textContent=total;
+
+document.getElementById("contador").textContent=contador;
+
+
 }
 
-function agregarProducto(nombre, precio) {
-  let prod = carrito.find(p => p.nombre === nombre);
-  if (prod) prod.cantidad++;
-  else carrito.push({nombre, precio, cantidad:1});
 
-  guardar();
-  render();
+
+// AGREGAR
+
+function agregarProducto(nombre,precio){
+
+
+let existe = carrito.find(
+producto=>producto.nombre===nombre
+);
+
+
+
+if(existe){
+
+existe.cantidad++;
+
 }
 
-function cambiarCantidad(i, cambio) {
-  carrito[i].cantidad += cambio;
-  if (carrito[i].cantidad <= 0) carrito.splice(i,1);
-  guardar();
-  render();
+else{
+
+
+carrito.push({
+
+nombre:nombre,
+
+precio:precio,
+
+cantidad:1
+
+});
+
+
 }
 
-function eliminar(i) {
-  carrito.splice(i,1);
-  guardar();
-  render();
+
+
+guardar();
+
+actualizarCarrito();
+
+
 }
 
-function vaciarCarrito() {
-  carrito = [];
-  guardar();
-  render();
+
+
+// CAMBIAR CANTIDAD
+
+function cambiarCantidad(index,cambio){
+
+
+carrito[index].cantidad += cambio;
+
+
+if(carrito[index].cantidad <= 0){
+
+carrito.splice(index,1);
+
 }
 
-function buscar() {
-  let valor = document.getElementById("buscador").value.toLowerCase();
-  let productos = document.querySelectorAll(".producto");
 
-  productos.forEach(p => {
-    let nombre = p.getAttribute("data-nombre");
-    p.style.display = nombre.includes(valor) ? "block" : "none";
-  });
+guardar();
+
+actualizarCarrito();
+
+
 }
 
-render();
+
+
+// ELIMINAR
+
+function eliminarProducto(index){
+
+
+carrito.splice(index,1);
+
+
+guardar();
+
+actualizarCarrito();
+
+
+}
+
+
+
+// VACIAR
+
+function vaciarCarrito(){
+
+
+carrito=[];
+
+
+guardar();
+
+actualizarCarrito();
+
+
+}
+
+
+
+// ABRIR Y CERRAR CARRITO
+
+function abrirCarrito(){
+
+document.getElementById("ventanaCarrito").style.display="block";
+
+}
+
+
+function cerrarCarrito(){
+
+document.getElementById("ventanaCarrito").style.display="none";
+
+}
+
+
+
+// BUSCADOR
+
+function buscar(){
+
+
+let texto=document
+.getElementById("buscador")
+.value
+.toLowerCase();
+
+
+
+let productos=document.querySelectorAll(".producto");
+
+
+
+productos.forEach(producto=>{
+
+
+let nombre=producto
+.getAttribute("data-nombre")
+.toLowerCase();
+
+
+
+if(nombre.includes(texto)){
+
+producto.style.display="block";
+
+}
+
+else{
+
+producto.style.display="none";
+
+}
+
+
+});
+
+
+}
+
+
+
+// FILTROS
+
+function filtrar(categoria){
+
+
+let productos=document.querySelectorAll(".producto");
+
+
+
+productos.forEach(producto=>{
+
+
+if(categoria=="todos"){
+
+producto.style.display="block";
+
+}
+
+else if(producto.dataset.categoria==categoria){
+
+producto.style.display="block";
+
+}
+
+else{
+
+producto.style.display="none";
+
+}
+
+
+});
+
+
+}
+
+
+
+// CARGAR AL INICIAR
+
+actualizarCarrito();
+
+
 </script>
+
 
 </body>
 </html>
