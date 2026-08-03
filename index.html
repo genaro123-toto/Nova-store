@@ -4,276 +4,882 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Nova Store</title>
+<title>Mi Tienda</title>
 
 <style>
 
 *{
-box-sizing:border-box;
-font-family: 'Segoe UI', Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
 }
 
 body{
-margin:0;
-background:#f4f5f7;
-color:#222;
+    background:#f5f5f5;
+    color:#222;
 }
 
 /* HEADER */
 
 header{
-background:white;
-padding:15px 30px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px #0001;
-position:sticky;
-top:0;
-z-index:10;
+    background:#111;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .logo{
-font-size:22px;
-font-weight:bold;
+    font-size:28px;
+    font-weight:bold;
 }
 
-#botonCarrito{
-background:#111;
-color:white;
-border:none;
-padding:10px 18px;
-border-radius:25px;
-cursor:pointer;
+.cart-btn{
+    background:#ff9800;
+    border:none;
+    padding:12px 20px;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:bold;
 }
 
 /* HERO */
 
 .hero{
-padding:60px 20px;
-text-align:center;
+    height:350px;
+    background:linear-gradient(
+    rgba(0,0,0,.5),
+    rgba(0,0,0,.5)),
+    url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
 }
 
 .hero h1{
-font-size:30px;
-margin-bottom:10px;
+    font-size:45px;
 }
 
 .hero p{
-color:#555;
+    margin-top:15px;
+    font-size:20px;
 }
 
-/* DESTACADO (tipo espacio para video o imagen grande) */
-
-.destacado{
-width:90%;
-max-width:900px;
-height:260px;
-background:#ddd;
-margin:30px auto;
-border-radius:15px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#666;
-}
 
 /* BUSCADOR */
 
-#buscador{
-display:block;
-width:90%;
-max-width:500px;
-margin:20px auto;
-padding:12px;
-border-radius:10px;
-border:1px solid #ccc;
+.search{
+    padding:25px;
+    text-align:center;
 }
+
+.search input{
+    width:80%;
+    max-width:500px;
+    padding:15px;
+    border-radius:30px;
+    border:1px solid #ccc;
+}
+
 
 /* PRODUCTOS */
 
-.productos{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-padding:30px;
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    padding:30px;
 }
 
-.producto{
-background:white;
-border-radius:15px;
-padding:15px;
-text-align:center;
-box-shadow:0 4px 12px #0001;
-transition:.3s;
-cursor:pointer;
+
+.card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px #0002;
+    transition:.3s;
 }
 
-.producto:hover{
-transform:translateY(-5px);
+.card:hover{
+    transform:translateY(-5px);
 }
 
-.producto img{
-width:100%;
-height:160px;
-object-fit:cover;
-border-radius:10px;
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
 }
 
-.producto h3{
-margin:10px 0;
+
+.card-content{
+    padding:20px;
 }
+
+
+.price{
+    color:#ff9800;
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0;
+}
+
+
+button{
+    cursor:pointer;
+}
+
+
+.add{
+    width:100%;
+    padding:12px;
+    background:#111;
+    color:white;
+    border:none;
+    border-radius:10px;
+}
+
+.add:hover{
+    background:#ff9800;
+}
+
 
 /* CARRITO */
 
-#carrito{
-position:fixed;
-right:0;
-top:0;
-width:320px;
-height:100vh;
-background:white;
-box-shadow:-5px 0 20px #0002;
-padding:20px;
-display:none;
-overflow:auto;
+.cart{
+    position:fixed;
+    right:-400px;
+    top:0;
+    width:350px;
+    height:100%;
+    background:white;
+    box-shadow:-5px 0 15px #0003;
+    padding:20px;
+    transition:.4s;
+    z-index:200;
+    overflow:auto;
 }
 
-.item{
-display:flex;
-gap:10px;
-margin-bottom:15px;
+
+.cart.active{
+    right:0;
 }
 
-.item img{
-width:50px;
-height:50px;
-border-radius:8px;
+
+.cart h2{
+    margin-bottom:20px;
 }
 
-/* WHATSAPP */
 
-.whatsapp{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#25d366;
-color:white;
-padding:14px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
+.product-cart{
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+}
+
+
+.product-cart button{
+    padding:5px 10px;
+    margin:5px;
+}
+
+
+.total{
+    font-size:25px;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+
+.buy{
+    background:#25d366;
+    color:white;
+    padding:15px;
+    border:none;
+    width:100%;
+    border-radius:10px;
+}
+
+
+/* FOOTER */
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+}
+
+
+@media(max-width:500px){
+
+.hero h1{
+    font-size:32px;
+}
+
+.cart{
+    width:100%;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+
 <header>
-<div class="logo">Nova Store</div>
-<button id="botonCarrito" onclick="abrirCarrito()">
-🛒 (<span id="contador">0</span>)
+
+<div class="logo">
+Mi Tienda
+</div>
+
+<button class="cart-btn" onclick="openCart()">
+🛒 Carrito (<span id="count">0</span>)
 </button>
+
 </header>
 
-<div class="hero">
-<h1>Comprá tecnología fácil</h1>
-<p>Productos confiables, precios claros</p>
+
+<section class="hero">
+
+<div>
+<h1>Comprá fácil y rápido</h1>
+<p>Productos de calidad al mejor precio</p>
 </div>
 
-<div class="destacado">
-(Acá va tu video o imagen grande)
-</div>
+</section>
 
-<input id="buscador" placeholder="Buscar productos...">
 
-<div class="productos">
+<div class="search">
 
-<div class="producto" onclick="agregar('Reloj Inteligente',20000)">
-<img src="https://via.placeholder.com/300">
-<h3>Reloj Inteligente</h3>
-</div>
-
-<div class="producto" onclick="agregar('Auriculares',20000)">
-<img src="https://via.placeholder.com/300">
-<h3>Auriculares</h3>
-</div>
-
-<div class="producto" onclick="agregar('Teclado Gamer',60000)">
-<img src="https://via.placeholder.com/300">
-<h3>Teclado Gamer</h3>
-</div>
-
-<div class="producto" onclick="agregar('Funda Celular',10000)">
-<img src="https://via.placeholder.com/300">
-<h3>Funda Celular</h3>
-</div>
-
-<div class="producto" onclick="agregar('Cargador',8000)">
-<img src="https://via.placeholder.com/300">
-<h3>Cargador Rápido</h3>
-</div>
-
-<div class="producto" onclick="agregar('Mousepad',6000)">
-<img src="https://via.placeholder.com/300">
-<h3>Mousepad Gamer</h3>
-</div>
+<input 
+type="text"
+id="search"
+placeholder="Buscar productos..."
+onkeyup="searchProducts()">
 
 </div>
 
-<div id="carrito">
-<h2>Carrito</h2>
-<div id="lista"></div>
-<h3>Total: $<span id="total">0</span></h3>
-<button onclick="cerrarCarrito()">Cerrar</button>
+
+
+<section class="products" id="products">
+
+
+<div class="card">
+
+<img src="https://via.placeholder.com/400">
+
+<div class="card-content">
+
+<h3>Producto 1</h3>
+
+<p>Descripción del producto</p>
+
+<div class="price">
+$10.000
 </div>
 
-<a class="whatsapp" href="#">WhatsApp</a>
+<button class="add" onclick="addProduct('Producto 1',10000)">
+Agregar al carrito
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://via.placeholder.com/400">
+
+<div class="card-content">
+
+<h3>Producto 2</h3>
+
+<p>Descripción del producto</p>
+
+<div class="price">
+$15.000
+</div>
+
+<button class="add" onclick="addProduct('Producto 2',15000)">
+Agregar al carrito
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img src="https://via.placeholder.com/400">
+
+<div class="card-content">
+
+<h3>Producto 3</h3>
+
+<p>Descripción del producto</p>
+
+<div class="price">
+$20.000
+</div>
+
+<button class="add" onclick="addProduct('Producto 3',20000)">
+Agregar al carrito
+</button>
+
+</div>
+
+</div>
+
+
+</section>
+<!-- CARRITO -->
+
+<div class="cart" id="cart">
+
+<h2>🛒 Tu carrito</h2>
+
+<div id="cart-items"></div>
+
+<div class="total">
+Total: $<span id="total">0</span>
+</div>
+
+<button class="buy" onclick="buyWhatsApp()">
+Comprar por WhatsApp
+</button>
+
+<br><br>
+
+<button onclick="closeCart()">
+Cerrar
+</button>
+
+</div>
+
+
+
+<footer>
+
+<p>© 2026 Mi Tienda - Todos los derechos reservados</p>
+
+</footer>
+
+
 
 <script>
 
-let carrito=[];
+let cart = [];
 
-function agregar(nombre,precio){
-carrito.push({nombre,precio});
-mostrar();
+
+/* ABRIR Y CERRAR CARRITO */
+
+function openCart(){
+
+document.getElementById("cart").classList.add("active");
+
 }
 
-function mostrar(){
-let lista=document.getElementById("lista");
-lista.innerHTML="";
-let total=0;
 
-carrito.forEach(p=>{
-let div=document.createElement("div");
-div.className="item";
+function closeCart(){
 
-div.innerHTML=`
-<img src="https://via.placeholder.com/100">
-<div>
-<b>${p.nombre}</b><br>
-$${p.precio}
-</div>
-`;
+document.getElementById("cart").classList.remove("active");
 
-lista.appendChild(div);
-total+=p.precio;
+}
+
+
+
+/* AGREGAR PRODUCTOS */
+
+function addProduct(name,price){
+
+let product = cart.find(item => item.name === name);
+
+
+if(product){
+
+product.quantity++;
+
+}else{
+
+cart.push({
+
+name:name,
+price:price,
+quantity:1
+
 });
 
-document.getElementById("total").textContent=total;
-document.getElementById("contador").textContent=carrito.length;
 }
 
-function abrirCarrito(){
-document.getElementById("carrito").style.display="block";
+
+updateCart();
+
 }
 
-function cerrarCarrito(){
-document.getElementById("carrito").style.display="none";
+
+
+/* ACTUALIZAR CARRITO */
+
+function updateCart(){
+
+
+let container = document.getElementById("cart-items");
+
+container.innerHTML="";
+
+
+let total=0;
+
+let count=0;
+
+
+cart.forEach((item,index)=>{
+
+
+total += item.price * item.quantity;
+
+count += item.quantity;
+
+
+container.innerHTML += `
+
+<div class="product-cart">
+
+<h3>${item.name}</h3>
+
+<p>$${item.price}</p>
+
+
+<button onclick="changeQuantity(${index},-1)">
+➖
+</button>
+
+
+<span>
+${item.quantity}
+</span>
+
+
+<button onclick="changeQuantity(${index},1)">
+➕
+</button>
+
+
+<button onclick="removeProduct(${index})">
+❌
+</button>
+
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById("total").innerText=total;
+
+document.getElementById("count").innerText=count;
+
+
 }
+
+
+
+/* CAMBIAR CANTIDAD */
+
+function changeQuantity(index,value){
+
+cart[index].quantity += value;
+
+
+if(cart[index].quantity <=0){
+
+cart.splice(index,1);
+
+}
+
+
+updateCart();
+
+}
+
+
+
+/* ELIMINAR PRODUCTO */
+
+function removeProduct(index){
+
+cart.splice(index,1);
+
+updateCart();
+
+}
+
+
+
+/* BUSCADOR */
+
+function searchProducts(){
+
+
+let input=document
+.getElementById("search")
+.value
+.toLowerCase();
+
+
+let cards=document
+.querySelectorAll(".card");
+
+
+cards.forEach(card=>{
+
+
+let text=card.innerText.toLowerCase();
+
+
+if(text.includes(input)){
+
+card.style.display="block";
+
+}else{
+
+card.style.display="none";
+
+}
+
+
+});
+
+
+}
+
+
+
+/* WHATSAPP */
+
+function buyWhatsApp(){
+
+
+let message="Hola, quiero comprar:%0A%0A";
+
+
+cart.forEach(item=>{
+
+
+message += 
+`${item.name} x${item.quantity} - $${item.price * item.quantity}%0A`;
+
+});
+
+
+message += `%0ATotal: $${document.getElementById("total").innerText}`;
+
+
+// CAMBIÁ ESTE NÚMERO POR EL TUYO
+
+let phone="5490000000000";
+
+
+window.open(
+"https://wa.me/"+phone+"?text="+message
+);
+
+
+}
+
+
 
 </script>
 
+
 </body>
+
 </html>
+<script>
+
+
+// ===============================
+// PERSONALIZACIÓN DE TIENDA
+// ===============================
+
+// Cambia aquí el nombre de tu tienda
+document.querySelector(".logo").innerHTML="🔥 Mi Tienda Oficial";
+
+
+// ===============================
+// PRODUCTOS CON IMÁGENES PROPIAS
+// ===============================
+//
+// Para poner tus fotos:
+// cambiá en los productos:
+// https://via.placeholder.com/400
+//
+// por una imagen tuya, ejemplo:
+// imagenes/remera.jpg
+//
+// o un link de internet.
+
+
+
+// ===============================
+// ANIMACIÓN AL CARGAR
+// ===============================
+
+window.onload=function(){
+
+let cards=document.querySelectorAll(".card");
+
+cards.forEach((card,index)=>{
+
+setTimeout(()=>{
+
+card.style.opacity="1";
+card.style.transform="translateY(0)";
+
+},index*150);
+
+
+});
+
+};
+
+
+
+// ===============================
+// ALERTA AL AGREGAR
+// ===============================
+
+let oldAddProduct=addProduct;
+
+addProduct=function(name,price){
+
+oldAddProduct(name,price);
+
+mostrarAviso(name);
+
+}
+
+
+
+function mostrarAviso(producto){
+
+let aviso=document.createElement("div");
+
+
+aviso.innerHTML=
+"✅ "+producto+" agregado al carrito";
+
+
+aviso.style.position="fixed";
+aviso.style.bottom="20px";
+aviso.style.left="50%";
+aviso.style.transform="translateX(-50%)";
+aviso.style.background="#111";
+aviso.style.color="white";
+aviso.style.padding="15px 25px";
+aviso.style.borderRadius="30px";
+aviso.style.zIndex="500";
+
+
+document.body.appendChild(aviso);
+
+
+setTimeout(()=>{
+
+aviso.remove();
+
+},2000);
+
+
+}
+
+
+
+// ===============================
+// GUARDAR CARRITO
+// ===============================
+
+let savedCart=localStorage.getItem("carrito");
+
+
+if(savedCart){
+
+cart=JSON.parse(savedCart);
+
+updateCart();
+
+}
+
+
+
+let oldUpdate=updateCart;
+
+
+updateCart=function(){
+
+oldUpdate();
+
+localStorage.setItem(
+"carrito",
+JSON.stringify(cart)
+);
+
+}
+
+
+
+
+// ===============================
+// MODO OSCURO
+// ===============================
+
+let dark=false;
+
+
+function darkMode(){
+
+dark=!dark;
+
+
+if(dark){
+
+document.body.style.background="#111";
+document.body.style.color="white";
+
+
+}else{
+
+document.body.style.background="#f5f5f5";
+document.body.style.color="#222";
+
+}
+
+
+}
+
+
+// ===============================
+// BOTÓN MODO OSCURO
+// ===============================
+
+let darkButton=document.createElement("button");
+
+darkButton.innerHTML="🌙";
+
+darkButton.style.position="fixed";
+darkButton.style.bottom="20px";
+darkButton.style.right="20px";
+darkButton.style.width="50px";
+darkButton.style.height="50px";
+darkButton.style.borderRadius="50%";
+darkButton.style.border="none";
+darkButton.style.background="#ff9800";
+darkButton.style.fontSize="22px";
+darkButton.style.zIndex="300";
+
+
+darkButton.onclick=darkMode;
+
+
+document.body.appendChild(darkButton);
+
+
+
+
+// ===============================
+// CONTADOR DE VISITAS
+// ===============================
+
+let visits=localStorage.getItem("visitas");
+
+
+if(!visits){
+
+visits=0;
+
+}
+
+
+visits++;
+
+
+localStorage.setItem(
+"visitas",
+visits
+);
+
+
+
+// ===============================
+// BOTÓN VOLVER ARRIBA
+// ===============================
+
+let topButton=document.createElement("button");
+
+
+topButton.innerHTML="⬆";
+
+
+topButton.style.position="fixed";
+topButton.style.bottom="80px";
+topButton.style.right="20px";
+topButton.style.width="45px";
+topButton.style.height="45px";
+topButton.style.borderRadius="50%";
+topButton.style.border="none";
+topButton.style.background="#111";
+topButton.style.color="white";
+topButton.style.display="none";
+topButton.style.zIndex="300";
+
+
+topButton.onclick=function(){
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
+};
+
+
+document.body.appendChild(topButton);
+
+
+
+window.onscroll=function(){
+
+if(window.scrollY>300){
+
+topButton.style.display="block";
+
+}else{
+
+topButton.style.display="none";
+
+}
+
+};
+
+
+
+</script>
