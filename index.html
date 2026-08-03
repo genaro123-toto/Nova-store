@@ -15,60 +15,67 @@ font-family: 'Segoe UI', Arial, sans-serif;
 
 body{
 margin:0;
-background:#f7f7f7;
+background:#f4f5f7;
 color:#222;
 }
 
 /* HEADER */
 
 header{
-background:#111;
-color:white;
-padding:20px;
+background:white;
+padding:15px 30px;
 display:flex;
 justify-content:space-between;
 align-items:center;
+box-shadow:0 2px 10px #0001;
+position:sticky;
+top:0;
+z-index:10;
 }
 
 .logo{
-font-size:26px;
+font-size:22px;
 font-weight:bold;
 }
 
 #botonCarrito{
-background:#00c853;
+background:#111;
+color:white;
 border:none;
-padding:14px 20px;
-border-radius:30px;
+padding:10px 18px;
+border-radius:25px;
 cursor:pointer;
-font-weight:bold;
-font-size:16px;
 }
 
-/* BANNER */
+/* HERO */
 
-.banner{
-background:#e0e0e0;
+.hero{
+padding:60px 20px;
 text-align:center;
-padding:20px;
-font-size:20px;
-font-weight:bold;
 }
 
-/* ZONA VIDEO */
+.hero h1{
+font-size:30px;
+margin-bottom:10px;
+}
 
-.video-box{
-margin:30px auto;
+.hero p{
+color:#555;
+}
+
+/* DESTACADO (tipo espacio para video o imagen grande) */
+
+.destacado{
 width:90%;
-max-width:800px;
-height:250px;
+max-width:900px;
+height:260px;
 background:#ddd;
+margin:30px auto;
+border-radius:15px;
 display:flex;
 align-items:center;
 justify-content:center;
-border-radius:15px;
 color:#666;
-font-size:18px;
 }
 
 /* BUSCADOR */
@@ -76,10 +83,9 @@ font-size:18px;
 #buscador{
 display:block;
 width:90%;
-max-width:600px;
+max-width:500px;
 margin:20px auto;
-padding:15px;
-font-size:16px;
+padding:12px;
 border-radius:10px;
 border:1px solid #ccc;
 }
@@ -88,7 +94,7 @@ border:1px solid #ccc;
 
 .productos{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 padding:30px;
 }
@@ -98,7 +104,7 @@ background:white;
 border-radius:15px;
 padding:15px;
 text-align:center;
-box-shadow:0 4px 10px #0001;
+box-shadow:0 4px 12px #0001;
 transition:.3s;
 cursor:pointer;
 }
@@ -109,7 +115,7 @@ transform:translateY(-5px);
 
 .producto img{
 width:100%;
-height:180px;
+height:160px;
 object-fit:cover;
 border-radius:10px;
 }
@@ -118,31 +124,19 @@ border-radius:10px;
 margin:10px 0;
 }
 
-/* CARRITO GRANDE */
+/* CARRITO */
 
-#ventanaCarrito{
-
+#carrito{
 position:fixed;
 right:0;
 top:0;
-
-width:340px;
+width:320px;
 height:100vh;
-
 background:white;
-
-box-shadow:-5px 0 20px #0003;
-
+box-shadow:-5px 0 20px #0002;
 padding:20px;
-
 display:none;
-
 overflow:auto;
-
-}
-
-#ventanaCarrito h2{
-margin-top:0;
 }
 
 .item{
@@ -152,25 +146,9 @@ margin-bottom:15px;
 }
 
 .item img{
-width:60px;
-height:60px;
-border-radius:10px;
-}
-
-.item button{
-margin-top:5px;
-}
-
-/* BOTONES */
-
-.boton{
-width:100%;
-padding:12px;
-border:none;
-background:#111;
-color:white;
-border-radius:10px;
-cursor:pointer;
+width:50px;
+height:50px;
+border-radius:8px;
 }
 
 /* WHATSAPP */
@@ -181,7 +159,7 @@ bottom:20px;
 left:20px;
 background:#25d366;
 color:white;
-padding:15px;
+padding:14px;
 border-radius:50px;
 text-decoration:none;
 font-weight:bold;
@@ -193,27 +171,23 @@ font-weight:bold;
 <body>
 
 <header>
-
-<div class="logo">🛒 Nova Store</div>
-
+<div class="logo">Nova Store</div>
 <button id="botonCarrito" onclick="abrirCarrito()">
-🛒 Carrito (<span id="contador">0</span>)
+🛒 (<span id="contador">0</span>)
 </button>
-
 </header>
 
-<div class="banner">
-🔥 20% DE DESCUENTO EN TODO 🔥
+<div class="hero">
+<h1>Comprá tecnología fácil</h1>
+<p>Productos confiables, precios claros</p>
 </div>
 
-<!-- VIDEO -->
-<div class="video-box">
-(Acá después vas a poner tu video)
+<div class="destacado">
+(Acá va tu video o imagen grande)
 </div>
 
-<input id="buscador" placeholder="🔎 Buscar productos...">
+<input id="buscador" placeholder="Buscar productos...">
 
-<!-- PRODUCTOS ABAJO -->
 <div class="productos">
 
 <div class="producto" onclick="agregar('Reloj Inteligente',20000)">
@@ -221,9 +195,9 @@ font-weight:bold;
 <h3>Reloj Inteligente</h3>
 </div>
 
-<div class="producto" onclick="agregar('Auriculares Bluetooth',20000)">
+<div class="producto" onclick="agregar('Auriculares',20000)">
 <img src="https://via.placeholder.com/300">
-<h3>Auriculares Bluetooth</h3>
+<h3>Auriculares</h3>
 </div>
 
 <div class="producto" onclick="agregar('Teclado Gamer',60000)">
@@ -236,30 +210,23 @@ font-weight:bold;
 <h3>Funda Celular</h3>
 </div>
 
-<div class="producto" onclick="agregar('Cargador Rápido',8000)">
+<div class="producto" onclick="agregar('Cargador',8000)">
 <img src="https://via.placeholder.com/300">
 <h3>Cargador Rápido</h3>
 </div>
 
-<div class="producto" onclick="agregar('Mousepad Gamer',6000)">
+<div class="producto" onclick="agregar('Mousepad',6000)">
 <img src="https://via.placeholder.com/300">
 <h3>Mousepad Gamer</h3>
 </div>
 
 </div>
 
-<!-- CARRITO -->
-
-<div id="ventanaCarrito">
-
-<h2>🛒 Tu carrito</h2>
-
+<div id="carrito">
+<h2>Carrito</h2>
 <div id="lista"></div>
-
 <h3>Total: $<span id="total">0</span></h3>
-
 <button onclick="cerrarCarrito()">Cerrar</button>
-
 </div>
 
 <a class="whatsapp" href="#">WhatsApp</a>
@@ -276,7 +243,6 @@ mostrar();
 function mostrar(){
 let lista=document.getElementById("lista");
 lista.innerHTML="";
-
 let total=0;
 
 carrito.forEach(p=>{
@@ -300,11 +266,11 @@ document.getElementById("contador").textContent=carrito.length;
 }
 
 function abrirCarrito(){
-document.getElementById("ventanaCarrito").style.display="block";
+document.getElementById("carrito").style.display="block";
 }
 
 function cerrarCarrito(){
-document.getElementById("ventanaCarrito").style.display="none";
+document.getElementById("carrito").style.display="none";
 }
 
 </script>
