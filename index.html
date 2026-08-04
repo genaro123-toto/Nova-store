@@ -2,193 +2,250 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nova Store</title>
+
+<!-- Tipografía PRO -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f5f5f5;
 }
-body{
-    background:#fff;
-    color:#111;
+
+/* HEADER */
+header {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
 }
-/* NAV */
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:20px 40px;
-}
-.logo{
-    font-weight:bold;
-    font-size:30px;
-    letter-spacing:2px;
-    background:linear-gradient(90deg,#111,#c8a27c);
-    -webkit-background-clip:text;
-    color:transparent;
-}
-nav a{
-    margin-left:20px;
-    text-decoration:none;
-    color:#555;
-}
-/* HERO */
-.hero{
-    height:45vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-start;
-    align-items:center;
-    padding-top:50px;
-    text-align:center;
-}
-.hero h1{
-    font-size:34px;
-    margin-bottom:15px;
-}
-.search-box{
-    width:450px;
-    max-width:90%;
-    padding:14px;
-    border-radius:30px;
-    border:1px solid #ddd;
-}
-/* BANNER DESCUENTO (nuevo lugar) */
-.banner-descuento{
-    margin:20px auto 10px;
-    width:fit-content;
-    background:#111;
-    color:#fff;
-    padding:8px 20px;
-    border-radius:20px;
-    font-size:14px;
-}
+
 /* PRODUCTOS */
-.productos{
-    padding:10px 40px 60px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:40px;
+.productos {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
 }
-.card img{
-    width:100%;
-    height:230px;
-    object-fit:cover;
-    border-radius:10px;
+
+.producto {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
 }
-/* PRECIOS */
-.precio-antiguo{
-    text-decoration:line-through;
-    color:#888;
-    font-size:14px;
+
+.producto:hover {
+  transform: scale(1.05);
 }
-.precio{
-    color:#c8a27c;
-    font-weight:bold;
-    font-size:18px;
+
+.producto img {
+  width: 100%;
+  border-radius: 10px;
 }
-.btn{
-    margin-top:10px;
-    padding:8px 15px;
-    border:none;
-    background:#111;
-    color:white;
-    cursor:pointer;
-    border-radius:5px;
+
+/* SECCIONES */
+.seccion {
+  display: none;
+  padding: 20px;
 }
+
 /* CARRITO */
-.carrito{
-    position:fixed;
-    right:0;
-    top:0;
-    width:260px;
-    height:100%;
-    background:white;
-    border-left:1px solid #eee;
-    padding:20px;
+#carrito {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background: #fff;
+  border-left: 2px solid #ddd;
+  padding: 15px;
+  overflow-y: auto;
 }
-.total{
-    margin-top:20px;
-    font-weight:bold;
+
+#carrito h2 {
+  margin-top: 0;
 }
-/* WHATSAPP */
-.whatsapp{
-    position:fixed;
-    bottom:25px;
-    right:25px;
-    background:#25D366;
-    color:white;
-    padding:16px 20px;
-    border-radius:50px;
-    font-size:17px;
-    text-decoration:none;
-    font-weight:bold;
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.carrito-item span {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.volver {
+  margin-bottom: 15px;
+  background: #555;
 }
 </style>
 </head>
+
 <body>
-<header>
-<div class="logo">Nova Store</div>
-<nav>
-<a href="#">Inicio</a>
-<a href="#">Tienda</a>
-</nav>
-</header>
-<section class="hero">
-<h1>Encontrá lo que buscás</h1>
-<input class="search-box" placeholder="Buscar productos...">
-</section>
-<div class="banner-descuento">20% OFF en tu primera compra</div>
-<section class="productos">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f37">
-<h3>Auriculares inalámbricos</h3>
-<p class="precio-antiguo">$20.000</p>
-<p class="precio">$16.000</p>
-<button class="btn" onclick="agregar('Auriculares',16000)">Agregar</button>
+
+<header>Nova Store</header>
+
+<!-- PRODUCTOS PRINCIPALES -->
+<div class="productos">
+
+  <div class="producto" onclick="mostrar('auriculares')">
+    <img src="https://via.placeholder.com/200">
+    <h3>Auriculares</h3>
+  </div>
+
+  <div class="producto" onclick="mostrar('smartwatch')">
+    <img src="https://via.placeholder.com/200">
+    <h3>Smartwatch</h3>
+  </div>
+
+  <div class="producto" onclick="mostrar('mouse')">
+    <img src="https://via.placeholder.com/200">
+    <h3>Mousepad</h3>
+  </div>
+
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1579586337278-3f436f25d4d6">
-<h3>Smartwatchs</h3>
-<p class="precio-antiguo">$25.000</p>
-<p class="precio">$20.000</p>
-<button class="btn" onclick="agregar('Smartwatchs',20000)">Agregar</button>
+
+<!-- SECCIÓN AURICULARES -->
+<div id="auriculares" class="seccion">
+  <button class="volver" onclick="volver()">← Volver</button>
+  <h2>Auriculares</h2>
+
+  <p>Modelo Pro - $10000</p>
+  <button onclick="agregarAlCarrito('Auricular Pro', 10000)">Agregar</button>
+
+  <p>Modelo Gamer - $15000</p>
+  <button onclick="agregarAlCarrito('Auricular Gamer', 15000)">Agregar</button>
 </div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1593642634367-d91a135587b5">
-<h3>Mousepad XL 80x40</h3>
-<p class="precio-antiguo">$27.000</p>
-<p class="precio">$25.000</p>
-<button class="btn" onclick="agregar('Mousepad',25000)">Agregar</button>
+
+<!-- SECCIÓN SMARTWATCH -->
+<div id="smartwatch" class="seccion">
+  <button class="volver" onclick="volver()">← Volver</button>
+  <h2>Smartwatch</h2>
+
+  <p>Smartwatch S1 - $20000</p>
+  <button onclick="agregarAlCarrito('Smartwatch S1', 20000)">Agregar</button>
+
+  <p>Smartwatch S2 - $25000</p>
+  <button onclick="agregarAlCarrito('Smartwatch S2', 25000)">Agregar</button>
 </div>
-</section>
-<div class="carrito">
-<h3>Carrito</h3>
-<div id="lista"></div>
-<div class="total" id="total">Total: $0</div>
+
+<!-- SECCIÓN MOUSEPAD -->
+<div id="mouse" class="seccion">
+  <button class="volver" onclick="volver()">← Volver</button>
+  <h2>Mousepads</h2>
+
+  <p>Mousepad XL - $5000</p>
+  <button onclick="agregarAlCarrito('Mousepad XL', 5000)">Agregar</button>
+
+  <p>Mousepad RGB - $8000</p>
+  <button onclick="agregarAlCarrito('Mousepad RGB', 8000)">Agregar</button>
 </div>
-<a class="whatsapp" href="https://wa.me/542964609317" target="_blank">
-WhatsApp
-</a>
+
+<!-- CARRITO -->
+<div id="carrito">
+  <h2>Carrito</h2>
+  <div id="lista-carrito"></div>
+  <p>Total: $<span id="total">0</span></p>
+  <button onclick="vaciarCarrito()">Vaciar carrito</button>
+</div>
+
 <script>
 let carrito = [];
-let total = 0;
-function agregar(nombre,precio){
-    carrito.push({nombre,precio});
-    total += precio;
-    render();
+
+function agregarAlCarrito(nombre, precio) {
+  const item = carrito.find(p => p.nombre === nombre);
+
+  if (item) {
+    item.cantidad++;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+
+  actualizarCarrito();
 }
-function render(){
-    const lista = document.getElementById("lista");
-    lista.innerHTML = "";
-    carrito.forEach(item=>{
-        lista.innerHTML += `<div>${item.nombre} - $${item.precio}</div>`;
-    });
-    document.getElementById("total").innerText = "Total: $" + total;
+
+function actualizarCarrito() {
+  const lista = document.getElementById("lista-carrito");
+  const total = document.getElementById("total");
+
+  lista.innerHTML = "";
+  let suma = 0;
+
+  carrito.forEach((producto, index) => {
+    suma += producto.precio * producto.cantidad;
+
+    lista.innerHTML += `
+      <div class="carrito-item">
+        <span>${producto.nombre} x${producto.cantidad}</span>
+        <div>
+          <button onclick="cambiarCantidad(${index}, -1)">-</button>
+          <button onclick="cambiarCantidad(${index}, 1)">+</button>
+          <button onclick="eliminarProducto(${index})">🗑️</button>
+        </div>
+      </div>
+    `;
+  });
+
+  total.textContent = suma;
+}
+
+function cambiarCantidad(index, cambio) {
+  carrito[index].cantidad += cambio;
+
+  if (carrito[index].cantidad <= 0) {
+    carrito.splice(index, 1);
+  }
+
+  actualizarCarrito();
+}
+
+function eliminarProducto(index) {
+  carrito.splice(index, 1);
+  actualizarCarrito();
+}
+
+function vaciarCarrito() {
+  carrito = [];
+  actualizarCarrito();
+}
+
+function mostrar(id) {
+  document.querySelectorAll('.seccion').forEach(sec => sec.style.display = "none");
+  document.querySelector('.productos').style.display = "none";
+  document.getElementById(id).style.display = "block";
+}
+
+function volver() {
+  document.querySelectorAll('.seccion').forEach(sec => sec.style.display = "none");
+  document.querySelector('.productos').style.display = "flex";
 }
 </script>
+
 </body>
 </html>
