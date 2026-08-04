@@ -2,301 +2,157 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<title>Tienda Pro</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TechStore</title>
-
 <style>
-
-body{
-margin:0;
-font-family:Arial;
-background:#f5f5f5;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
 }
 
-/* NAV */
-
-nav{
-background:#111;
-color:white;
-padding:15px;
-display:flex;
-justify-content:space-between;
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #111;
+  border-bottom: 1px solid #222;
 }
 
-.logo{font-size:22px;font-weight:bold;}
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ffcc;
+}
 
-.cart-btn{
-background:#444;
-color:white;
-padding:10px;
-border:none;
-border-radius:6px;
-cursor:pointer;
+nav button {
+  background: #00ffcc;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
 /* HERO */
-
-.hero{
-background:#222;
-color:white;
-padding:40px;
-text-align:center;
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(180deg, #111, #0f0f0f);
 }
 
-.hero h1{font-size:32px}
-
-/* PRODUCTS */
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-padding:20px;
+.hero h1 {
+  font-size: 40px;
 }
 
-.card{
-background:white;
-border-radius:10px;
-overflow:hidden;
-box-shadow:0 5px 10px #0001;
-cursor:pointer;
+.hero p {
+  color: #aaa;
 }
 
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
+.hero button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.card-content{padding:15px}
-
-.price-old{
-text-decoration:line-through;
-color:#888;
+/* PRODUCTOS */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+  padding: 40px;
 }
 
-.price-new{
-font-size:20px;
-font-weight:bold;
+.card {
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+  border: 1px solid #222;
 }
 
-/* PRODUCT VIEW */
-
-.product-view{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:white;
-display:none;
-padding:20px;
-overflow:auto;
-z-index:999;
+.card:hover {
+  transform: translateY(-5px);
+  border: 1px solid #00ffcc;
 }
 
-.product-view img{
-width:100%;
-max-width:400px;
+.card img {
+  width: 100%;
+  border-radius: 8px;
 }
 
-.close{
-position:absolute;
-top:20px;
-right:20px;
-font-size:25px;
-cursor:pointer;
+.price {
+  color: #00ffcc;
+  font-size: 18px;
 }
 
-.buy{
-background:#111;
-color:white;
-padding:15px;
-border:none;
-width:100%;
-margin-top:10px;
+.card button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #00ffcc;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.whatsapp{
-background:#25d366;
-color:white;
-padding:15px;
-border:none;
-width:100%;
-margin-top:10px;
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #222;
+  color: #777;
 }
-
-/* CARRITO */
-
-.cart{
-position:fixed;
-right:-400px;
-top:0;
-width:400px;
-height:100%;
-background:white;
-padding:20px;
-transition:.3s;
-overflow:auto;
-}
-
-.cart.active{right:0;}
-
 </style>
 </head>
 
 <body>
 
 <nav>
-<div class="logo">TechStore</div>
-<button class="cart-btn" onclick="openCart()">🛒 (<span id="count">0</span>)</button>
+  <div class="logo">GEN STORE</div>
+  <button>Carrito 🛒</button>
 </nav>
 
-<div class="hero">
-<h1>Tecnología confiable</h1>
-<p>Envíos en Río Grande • Garantía • Compra segura</p>
-</div>
+<section class="hero">
+  <h1>Productos Tech que valen la pena</h1>
+  <p>Envíos a todo el país • Garantía • Ofertas limitadas</p>
+  <button>Ver productos</button>
+</section>
 
 <section class="products">
 
-<!-- SMARTWATCH -->
-<div class="card" onclick="openProduct('reloj')">
-<img src="https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b">
-<div class="card-content">
-<h3>Smartwatch Pro</h3>
-<div class="price-old">$60.000</div>
-<div class="price-new">$45.000 (25% OFF)</div>
-</div>
-</div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300" alt="">
+    <h3>Smartwatchs</h3>
+    <p class="price">$25.000</p>
+    <button>Agregar al carrito</button>
+  </div>
 
-<!-- MOUSEPAD -->
-<div class="card" onclick="openProduct('mousepad')">
-<img src="https://images.unsplash.com/photo-1587202372775-9891b2b4c3d5">
-<div class="card-content">
-<h3>Mousepad XL Gamer</h3>
-<div class="price-old">$20.000</div>
-<div class="price-new">$15.000 (25% OFF)</div>
-</div>
-</div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300" alt="">
+    <h3>Auriculares</h3>
+    <p class="price">$18.000</p>
+    <button>Agregar al carrito</button>
+  </div>
 
-<!-- AURIS -->
-<div class="card" onclick="openProduct('auris')">
-<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad">
-<div class="card-content">
-<h3>Auriculares Bluetooth</h3>
-<div class="price-old">$35.000</div>
-<div class="price-new">$25.000 (30% OFF)</div>
-</div>
-</div>
+  <div class="card">
+    <img src="https://via.placeholder.com/300" alt="">
+    <h3>Mousepad</h3>
+    <p class="price">$6.000</p>
+    <button>Agregar al carrito</button>
+  </div>
 
 </section>
 
-<!-- VISTA PRODUCTO -->
-<div class="product-view" id="productView">
-
-<div class="close" onclick="closeProduct()">❌</div>
-
-<h2 id="p-title"></h2>
-
-<img id="p-img">
-
-<p id="p-desc"></p>
-
-<p><b>Envíos disponibles en Río Grande, Tierra del Fuego</b></p>
-
-<button class="buy" onclick="addCurrent()">Agregar al carrito</button>
-
-<button class="whatsapp" onclick="buyNow()">Comprar por WhatsApp</button>
-
-</div>
-
-<!-- CARRITO -->
-<div class="cart" id="cart">
-<h2>Carrito</h2>
-<div id="cart-items"></div>
-</div>
-
-<script>
-
-let cart=[];
-let currentProduct=null;
-
-function openCart(){
-document.getElementById("cart").classList.toggle("active");
-}
-
-function addProduct(name,price){
-let p=cart.find(x=>x.name===name);
-if(p){p.q++}else{cart.push({name,price,q:1})}
-updateCart();
-}
-
-function updateCart(){
-let html="";
-let count=0;
-
-cart.forEach(i=>{
-html+=i.name+" x"+i.q+"<br>";
-count+=i.q;
-});
-
-document.getElementById("cart-items").innerHTML=html;
-document.getElementById("count").innerText=count;
-}
-
-/* PRODUCTOS */
-
-function openProduct(type){
-
-let data={
-
-reloj:{
-name:"Smartwatch Pro",
-price:45000,
-img:"https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b",
-desc:"Pantalla táctil, medición de salud, notificaciones, batería de larga duración."
-},
-
-mousepad:{
-name:"Mousepad XL Gamer",
-price:15000,
-img:"https://images.unsplash.com/photo-1587202372775-9891b2b4c3d5",
-desc:"Gran tamaño, superficie antideslizante, ideal para gaming."
-},
-
-auris:{
-name:"Auriculares Bluetooth",
-price:25000,
-img:"https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-desc:"Sonido potente, sin cables, batería de larga duración."
-}
-
-};
-
-currentProduct=data[type];
-
-document.getElementById("p-title").innerText=currentProduct.name;
-document.getElementById("p-img").src=currentProduct.img;
-document.getElementById("p-desc").innerText=currentProduct.desc;
-
-document.getElementById("productView").style.display="block";
-}
-
-function closeProduct(){
-document.getElementById("productView").style.display="none";
-}
-
-function addCurrent(){
-addProduct(currentProduct.name,currentProduct.price);
-}
-
-function buyNow(){
-let msg="Hola quiero comprar "+currentProduct.name;
-window.open("https://wa.me/5490000000000?text="+msg);
-}
-
-</script>
+<footer>
+  © 2026 Gen Store - Todos los derechos reservados
+</footer>
 
 </body>
 </html>
