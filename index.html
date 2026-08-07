@@ -3,249 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <title>Nova Store</title>
-
-<!-- Tipografía PRO -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
 body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  background: #f5f5f5;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
 }
 
 /* HEADER */
-header {
-  background: #000;
-  color: #fff;
-  padding: 15px;
-  text-align: center;
-  font-size: 22px;
-  font-weight: 600;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: white;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.search {
+    width: 40%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* VIDEO */
+.video {
+    height: 300px;
+    margin: 20px;
+    background: #ddd;
+    border-radius: 10px;
+}
+
+/* OFERTA */
+.oferta {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
 }
 
 /* PRODUCTOS */
 .productos {
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
 }
 
-.producto {
-  background: #fff;
-  padding: 15px;
-  border-radius: 10px;
-  width: 200px;
-  text-align: center;
-  cursor: pointer;
-  transition: 0.2s;
+.card {
+    background: white;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    border-radius: 10px;
 }
 
-.producto:hover {
-  transform: scale(1.05);
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
-.producto img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-/* SECCIONES */
-.seccion {
-  display: none;
-  padding: 20px;
-}
-
-/* CARRITO */
-#carrito {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 260px;
-  height: 100%;
-  background: #fff;
-  border-left: 2px solid #ddd;
-  padding: 15px;
-  overflow-y: auto;
-}
-
-#carrito h2 {
-  margin-top: 0;
-}
-
-.carrito-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.carrito-item span {
-  font-weight: 500;
-  font-size: 14px;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  padding: 5px 8px;
-  border-radius: 5px;
-  background: #000;
-  color: #fff;
-  transition: 0.2s;
-}
-
-button:hover {
-  transform: scale(1.05);
-}
-
-.volver {
-  margin-bottom: 15px;
-  background: #555;
+.btn {
+    margin-top: 10px;
+    display: inline-block;
+    background: #25D366;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-decoration: none;
 }
 </style>
 </head>
 
 <body>
 
-<header>Nova Store</header>
+<!-- HEADER -->
+<div class="header">
+    <div class="logo">Nova Store</div>
+    <input class="search" placeholder="Buscar productos...">
+    <a class="whatsapp" href="https://wa.me/549XXXXXXXXXX">WhatsApp</a>
+</div>
 
-<!-- PRODUCTOS PRINCIPALES -->
+<!-- VIDEO -->
+<div class="video"></div>
+
+<!-- OFERTA -->
+<div class="oferta">20% DE DESCUENTO EN TU PRIMERA COMPRA</div>
+
+<!-- PRODUCTOS -->
 <div class="productos">
 
-  <div class="producto" onclick="mostrar('auriculares')">
-    <img src="https://via.placeholder.com/200">
-    <h3>Auriculares</h3>
-  </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/200">
+        <h3>Smartwatch S</h3>
+        <p>$20.000</p>
+        <a class="btn" href="https://wa.me/549XXXXXXXXXX?text=Hola quiero consultar por el Smartwatch">Consultar</a>
+    </div>
 
-  <div class="producto" onclick="mostrar('smartwatch')">
-    <img src="https://via.placeholder.com/200">
-    <h3>Smartwatch</h3>
-  </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/200">
+        <h3>Auriculares</h3>
+        <p>$16.000</p>
+        <a class="btn" href="https://wa.me/549XXXXXXXXXX?text=Hola quiero consultar por auriculares">Consultar</a>
+    </div>
 
-  <div class="producto" onclick="mostrar('mouse')">
-    <img src="https://via.placeholder.com/200">
-    <h3>Mousepad</h3>
-  </div>
+    <div class="card">
+        <img src="https://via.placeholder.com/200">
+        <h3>Mousepad</h3>
+        <p>$25.000</p>
+        <a class="btn" href="https://wa.me/549XXXXXXXXXX?text=Hola quiero consultar por mousepad">Consultar</a>
+    </div>
+
+    <div class="card">
+        <img src="https://via.placeholder.com/200">
+        <h3>Funda</h3>
+        <p>$10.000</p>
+        <a class="btn" href="https://wa.me/549XXXXXXXXXX?text=Hola quiero consultar por funda">Consultar</a>
+    </div>
 
 </div>
-
-<!-- SECCIÓN AURICULARES -->
-<div id="auriculares" class="seccion">
-  <button class="volver" onclick="volver()">← Volver</button>
-  <h2>Auriculares</h2>
-
-  <p>Modelo Pro - $10000</p>
-  <button onclick="agregarAlCarrito('Auricular Pro', 10000)">Agregar</button>
-
-  <p>Modelo Gamer - $15000</p>
-  <button onclick="agregarAlCarrito('Auricular Gamer', 15000)">Agregar</button>
-</div>
-
-<!-- SECCIÓN SMARTWATCH -->
-<div id="smartwatch" class="seccion">
-  <button class="volver" onclick="volver()">← Volver</button>
-  <h2>Smartwatch</h2>
-
-  <p>Smartwatch S1 - $20000</p>
-  <button onclick="agregarAlCarrito('Smartwatch S1', 20000)">Agregar</button>
-
-  <p>Smartwatch S2 - $25000</p>
-  <button onclick="agregarAlCarrito('Smartwatch S2', 25000)">Agregar</button>
-</div>
-
-<!-- SECCIÓN MOUSEPAD -->
-<div id="mouse" class="seccion">
-  <button class="volver" onclick="volver()">← Volver</button>
-  <h2>Mousepads</h2>
-
-  <p>Mousepad XL - $5000</p>
-  <button onclick="agregarAlCarrito('Mousepad XL', 5000)">Agregar</button>
-
-  <p>Mousepad RGB - $8000</p>
-  <button onclick="agregarAlCarrito('Mousepad RGB', 8000)">Agregar</button>
-</div>
-
-<!-- CARRITO -->
-<div id="carrito">
-  <h2>Carrito</h2>
-  <div id="lista-carrito"></div>
-  <p>Total: $<span id="total">0</span></p>
-  <button onclick="vaciarCarrito()">Vaciar carrito</button>
-</div>
-
-<script>
-let carrito = [];
-
-function agregarAlCarrito(nombre, precio) {
-  const item = carrito.find(p => p.nombre === nombre);
-
-  if (item) {
-    item.cantidad++;
-  } else {
-    carrito.push({ nombre, precio, cantidad: 1 });
-  }
-
-  actualizarCarrito();
-}
-
-function actualizarCarrito() {
-  const lista = document.getElementById("lista-carrito");
-  const total = document.getElementById("total");
-
-  lista.innerHTML = "";
-  let suma = 0;
-
-  carrito.forEach((producto, index) => {
-    suma += producto.precio * producto.cantidad;
-
-    lista.innerHTML += `
-      <div class="carrito-item">
-        <span>${producto.nombre} x${producto.cantidad}</span>
-        <div>
-          <button onclick="cambiarCantidad(${index}, -1)">-</button>
-          <button onclick="cambiarCantidad(${index}, 1)">+</button>
-          <button onclick="eliminarProducto(${index})">🗑️</button>
-        </div>
-      </div>
-    `;
-  });
-
-  total.textContent = suma;
-}
-
-function cambiarCantidad(index, cambio) {
-  carrito[index].cantidad += cambio;
-
-  if (carrito[index].cantidad <= 0) {
-    carrito.splice(index, 1);
-  }
-
-  actualizarCarrito();
-}
-
-function eliminarProducto(index) {
-  carrito.splice(index, 1);
-  actualizarCarrito();
-}
-
-function vaciarCarrito() {
-  carrito = [];
-  actualizarCarrito();
-}
-
-function mostrar(id) {
-  document.querySelectorAll('.seccion').forEach(sec => sec.style.display = "none");
-  document.querySelector('.productos').style.display = "none";
-  document.getElementById(id).style.display = "block";
-}
-
-function volver() {
-  document.querySelectorAll('.seccion').forEach(sec => sec.style.display = "none");
-  document.querySelector('.productos').style.display = "flex";
-}
-</script>
 
 </body>
 </html>
