@@ -17,20 +17,14 @@ body {
   padding: 15px 20px;
 }
 .logo {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: bold;
-  letter-spacing: 1px;
 }
 #buscador {
   padding: 10px;
-  width: 40%;
+  width: 50%;
   border-radius: 20px;
   border: 1px solid #ccc;
-}
-/* ICONO WHATSAPP */
-.wsp-header {
-  font-size: 22px;
-  text-decoration: none;
 }
 /* BANNER */
 .banner-descuento {
@@ -65,23 +59,35 @@ body {
   border-radius: 10px;
   text-align: center;
 }
+/* IMÁGENES */
 .producto img {
   width: 100%;
   height: 150px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 10px;
-  background: white;
 }
 /* PRECIO */
-.precio {
-  margin-top: 10px;
+.precio-original {
+  font-size: 18px;
 }
-.precio-viejo {
+.precio-tachado {
   text-decoration: line-through;
   color: gray;
 }
 .precio-nuevo {
+  font-size: 20px;
   font-weight: bold;
+  color: green;
+}
+/* ETIQUETA DESCUENTO */
+.badge {
+  background: black;
+  color: white;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 5px;
 }
 /* BOTÓN DESCUENTO */
 .btn-descuento {
@@ -94,26 +100,20 @@ body {
 .btn-descuento.usado {
   background: #ccc;
   color: #666;
+  border: 1px solid #999;
   cursor: not-allowed;
-}
-/* BADGE */
-.badge {
-  display: inline-block;
-  margin-left: 8px;
-  font-size: 12px;
-  color: green;
-  font-weight: bold;
 }
 /* BOTÓN WSP */
 .btn-wsp {
   display: inline-block;
   margin-top: 10px;
   padding: 10px;
-  background-color: #25D366;
-  color: white;
+  background-color: white;
+  color: black;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  border: 2px solid black;
 }
 /* MOBILE */
 @media (max-width: 600px) {
@@ -131,61 +131,47 @@ body {
 <div class="header">
   <div class="logo">VenSur</div>
   <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="buscarProductos()">
-
-💬
-
 </div>
 <div class="banner-descuento">
   20% de descuento en tu primera compra
 </div>
 <div class="seccion-descuento">
+  <!-- HERO -->
   <div class="hero">
     <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
   </div>
   <div class="productos">
 <!-- AURICULARES -->
 <div class="producto">
-  <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df">
+  <img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46">
   <h3>Auriculares Inalámbricos</h3>
-  <div class="precio" id="p1">
-    <span class="precio-viejo">$15.000</span><br>
-    <span class="precio-nuevo">$12.000</span>
-  </div>
-  <button class="btn-descuento" onclick="aplicar(this,'p1')">
+  <div id="p1" class="precio-original">$15.000</div>
+  <button class="btn-descuento" onclick="aplicarDescuento('p1',15000,this)">
     Aplicar descuento →
   </button>
-  <span id="b1"></span>
-  <br>
+  <div id="badge1"></div>
   <a class="btn-wsp" href="#">Consultar</a>
 </div>
 <!-- SMARTWATCH -->
 <div class="producto">
   <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
   <h3>Smartwatches</h3>
-  <div class="precio" id="p2">
-    <span class="precio-viejo">$25.000</span><br>
-    <span class="precio-nuevo">$20.000</span>
-  </div>
-  <button class="btn-descuento" onclick="aplicar(this,'p2')">
+  <div id="p2" class="precio-original">$25.000</div>
+  <button class="btn-descuento" onclick="aplicarDescuento('p2',25000,this)">
     Aplicar descuento →
   </button>
-  <span id="b2"></span>
-  <br>
+  <div id="badge2"></div>
   <a class="btn-wsp" href="#">Consultar</a>
 </div>
 <!-- FUNDAS -->
 <div class="producto">
-  <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505">
+  <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc">
   <h3>Fundas para Celular</h3>
-  <div class="precio" id="p3">
-    <span class="precio-viejo">$10.000</span><br>
-    <span class="precio-nuevo">$8.000</span>
-  </div>
-  <button class="btn-descuento" onclick="aplicar(this,'p3')">
+  <div id="p3" class="precio-original">$10.000</div>
+  <button class="btn-descuento" onclick="aplicarDescuento('p3',10000,this)">
     Aplicar descuento →
   </button>
-  <span id="b3"></span>
-  <br>
+  <div id="badge3"></div>
   <a class="btn-wsp" href="#">Consultar</a>
 </div>
   </div>
@@ -199,12 +185,17 @@ function buscarProductos() {
     p.style.display = texto.includes(input) ? "block" : "none";
   });
 }
-function aplicar(btn, id) {
-  if(btn.classList.contains("usado")) return;
-  btn.classList.add("usado");
-  btn.innerText = "Aplicado";
-  let badge = document.getElementById("b" + id.replace("p",""));
-  badge.innerHTML = '<span class="badge">✔ -20% aplicado</span>';
+function aplicarDescuento(id, base, boton) {
+  if (boton.classList.contains("usado")) return;
+  let precio = document.getElementById(id);
+  let badge = document.getElementById("badge" + id.replace("p",""));
+  let nuevo = base * 0.8;
+  precio.innerHTML = 
+    '<span class="precio-tachado">$' + base.toLocaleString() + '</span><br>' +
+    '<span class="precio-nuevo">$' + Math.round(nuevo).toLocaleString() + '</span>';
+  badge.innerHTML = '<div class="badge">-20% aplicado</div>';
+  boton.classList.add("usado");
+  boton.innerText = "Descuento aplicado";
 }
 </script>
 </body>
