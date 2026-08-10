@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nova.Vensur</title>
-
 <style>
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
-
 /* HEADER */
 .header {
   display: flex;
@@ -18,19 +16,16 @@ body {
   align-items: center;
   padding: 15px 20px;
 }
-
 .logo {
   font-size: 32px;
   font-weight: bold;
 }
-
 #buscador {
   padding: 10px;
   width: 50%;
   border-radius: 20px;
   border: 1px solid #ccc;
 }
-
 /* BANNER */
 .banner-descuento {
   background-color: black;
@@ -39,13 +34,11 @@ body {
   padding: 12px;
   font-weight: bold;
 }
-
 /* SECCIÓN */
 .seccion-descuento {
   background-color: #F5EFE6;
   padding: 30px;
 }
-
 /* HERO */
 .hero img {
   width: 100%;
@@ -54,31 +47,35 @@ body {
   border-radius: 10px;
   margin-bottom: 30px;
 }
-
 /* PRODUCTOS */
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
-
 .producto {
   background: white;
   padding: 15px;
   border-radius: 10px;
   text-align: center;
 }
-
-/* ESPACIO PARA IMAGEN (placeholder) */
-.img-placeholder {
+/* IMÁGENES */
+.producto img {
   width: 100%;
   height: 150px;
-  background-color: #ddd;
+  object-fit: cover;
   border-radius: 10px;
   margin-bottom: 10px;
 }
-
-/* BOTÓN */
+/* BOTÓN DESCUENTO */
+.btn-descuento {
+  margin-top: 5px;
+  padding: 6px 10px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+}
+/* BOTÓN WHATSAPP */
 .btn-wsp {
   display: inline-block;
   margin-top: 10px;
@@ -89,94 +86,87 @@ body {
   border-radius: 5px;
   font-weight: bold;
 }
-
 /* MOBILE */
 @media (max-width: 600px) {
   .header {
     flex-direction: column;
     gap: 10px;
   }
-
   #buscador {
     width: 100%;
   }
-
   .logo {
     font-size: 26px;
   }
 }
 </style>
 </head>
-
 <body>
-
 <!-- HEADER -->
 <div class="header">
   <div class="logo">Nova.Vensur</div>
   <input type="text" id="buscador" placeholder="Buscar productos..." onkeyup="buscarProductos()">
 </div>
-
 <!-- BANNER -->
 <div class="banner-descuento">
   20% de descuento en tu primera compra
 </div>
-
 <!-- CONTENIDO -->
 <div class="seccion-descuento">
-
-  <!-- HERO (SMARTWATCH REAL) -->
+  <!-- HERO (SE MANTIENE IGUAL) -->
   <div class="hero">
     <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
   </div>
-
   <!-- PRODUCTOS -->
   <div class="productos">
-
-    <!-- AURICULARES -->
-    <div class="producto">
-      <div class="img-placeholder"></div>
-      <h3>Auriculares Inalámbricos</h3>
-      <p>$16.000</p>
-      <a class="btn-wsp" href="https://wa.me/5492964609317?text=Hola,%20vi%20los%20auriculares%20inalámbricos%20en%20Nova%20Store%20y%20me%20interesan.%20Quisiera%20saber%20stock,%20colores,%20batería%20y%20envío%20en%20Río%20Grande.">
-        Consultar por WhatsApp
-      </a>
-    </div>
-
-    <!-- SMARTWATCH -->
-    <div class="producto">
-      <div class="img-placeholder"></div>
-      <h3>Smartwatchs</h3>
-      <p>$25.000</p>
-      <a class="btn-wsp" href="https://wa.me/5492964609317?text=Hola,%20vi%20los%20smartwatchs%20en%20Nova%20Store%20y%20me%20interesan.%20Quisiera%20info%20sobre%20funciones,%20compatibilidad,%20batería%20y%20stock%20en%20Río%20Grande.">
-        Consultar por WhatsApp
-      </a>
-    </div>
-
-    <!-- FUNDAS -->
-    <div class="producto">
-      <div class="img-placeholder"></div>
-      <h3>Fundas para Celular</h3>
-      <p>$10.000</p>
-      <a class="btn-wsp" href="https://wa.me/5492964609317?text=Hola,%20vi%20las%20fundas%20para%20celular%20en%20Nova%20Store%20y%20me%20interesan.%20Quisiera%20saber%20modelos,%20colores%20y%20stock%20disponible.">
-        Consultar por WhatsApp
-      </a>
-    </div>
-
-  </div>
-
+<!-- AURICULARES -->
+<div class="producto">
+  <img src="https://images.unsplash.com/photo-1588423771073-b8903fbb85b5">
+  <h3>Auriculares Inalámbricos</h3>
+  <p id="p1" data-base="16000">$16.000</p>
+  <button class="btn-descuento" onclick="descuento('p1')">-25%</button>
+  <a class="btn-wsp" href="https://wa.me/5492964609317?text=Hola,%20vi%20los%20auriculares%20inalámbricos%20en%20Nova%20Store%20y%20me%20interesan.%20Quisiera%20saber%20stock,%20colores,%20batería%20y%20envío%20en%20Río%20Grande.">
+    Consultar por WhatsApp
+  </a>
 </div>
-
+<!-- SMARTWATCH -->
+<div class="producto">
+  <!-- MISMA IMAGEN QUE HERO -->
+  <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
+  <h3>Smartwatchs</h3>
+  <p id="p2" data-base="25000">$25.000</p>
+  <button class="btn-descuento" onclick="descuento('p2')">-25%</button>
+  <a class="btn-wsp" href="https://wa.me/5492964609317?text=Hola,%20vi%20los%20smartwatchs%20en%20Nova%20Store%20y%20me%20interesan.%20Quisiera%20info%20sobre%20funciones,%20compatibilidad,%20batería%20y%20stock%20en%20Río%20Grande.">
+    Consultar por WhatsApp
+  </a>
+</div>
+<!-- FUNDAS -->
+<div class="producto">
+  <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc">
+  <h3>Fundas para Celular</h3>
+  <p id="p3" data-base="10000">$10.000</p>
+  <button class="btn-descuento" onclick="descuento('p3')">-25%</button>
+  <a class="btn-wsp" href="https://wa.me/5492964609317?text=Hola,%20vi%20las%20fundas%20para%20celular%20en%20Nova%20Store%20y%20me%20interesan.%20Quisiera%20saber%20modelos,%20colores%20y%20stock%20disponible.">
+    Consultar por WhatsApp
+  </a>
+</div>
+  </div>
+</div>
 <script>
 function buscarProductos() {
   let input = document.getElementById("buscador").value.toLowerCase();
   let productos = document.querySelectorAll(".producto");
-
   productos.forEach(p => {
     let texto = p.innerText.toLowerCase();
     p.style.display = texto.includes(input) ? "block" : "none";
   });
 }
+function descuento(id) {
+  let precio = document.getElementById(id);
+  let base = parseFloat(precio.getAttribute("data-base"));
+  let nuevo = base * 0.75;
+  precio.innerText = "$" + Math.round(nuevo).toLocaleString();
+}
 </script>
-
 </body>
 </html>
