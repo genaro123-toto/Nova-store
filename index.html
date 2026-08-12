@@ -3,15 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>VenSur</title>
 
 <style>
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f5efe6;
 }
 
 /* HEADER */
@@ -20,7 +17,6 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
-  background-color: white;
 }
 
 .logo {
@@ -29,12 +25,11 @@ body {
 }
 
 #buscador {
-  padding: 10px 15px;
+  padding: 10px;
   width: 50%;
   border-radius: 20px;
   border: 1px solid #ccc;
   outline: none;
-  font-size: 15px;
 }
 
 #buscador:focus {
@@ -52,20 +47,17 @@ body {
 
 /* SECCIÓN */
 .seccion-descuento {
+  background-color: #F5EFE6;
   padding: 30px;
 }
 
 /* HERO */
-.hero {
-  margin-bottom: 30px;
-}
-
 .hero img {
   width: 100%;
-  height: 350px;
+  max-height: 350px;
   object-fit: cover;
   border-radius: 10px;
-  display: block;
+  margin-bottom: 30px;
 }
 
 /* PRODUCTOS */
@@ -80,23 +72,20 @@ body {
   padding: 15px;
   border-radius: 10px;
   text-align: center;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
-/* IMÁGENES DE PRODUCTOS */
+/* IMÁGENES */
 .producto img {
   width: 100%;
   height: 175px;
   object-fit: contain;
   background-color: white;
   border-radius: 10px;
-  display: block;
 }
 
 /* PRECIO */
 .precio-original {
   font-size: 18px;
-  margin-top: 10px;
 }
 
 .precio-tachado {
@@ -124,16 +113,10 @@ body {
 /* BOTÓN DESCUENTO */
 .btn-descuento {
   margin-top: 10px;
-  padding: 8px 12px;
+  padding: 6px 10px;
   border: 1px solid black;
   background: white;
   cursor: pointer;
-  border-radius: 5px;
-}
-
-.btn-descuento:hover {
-  background: black;
-  color: white;
 }
 
 .btn-descuento.usado {
@@ -143,11 +126,11 @@ body {
   cursor: not-allowed;
 }
 
-/* BOTÓN WHATSAPP */
+/* BOTÓN WSP */
 .btn-wsp {
   display: inline-block;
   margin-top: 10px;
-  padding: 10px 15px;
+  padding: 10px;
   background-color: white;
   color: black;
   text-decoration: none;
@@ -156,48 +139,29 @@ body {
   border: 2px solid black;
 }
 
-.btn-wsp:hover {
-  background-color: black;
-  color: white;
-}
-
 /* MOBILE */
 @media (max-width: 600px) {
-
   .header {
     flex-direction: column;
     gap: 10px;
   }
 
   #buscador {
-    width: 90%;
-  }
-
-  .seccion-descuento {
-    padding: 15px;
-  }
-
-  .hero img {
-    height: 220px;
+    width: 100%;
   }
 
   .producto img {
     height: 175px;
   }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <div class="header">
 
-  <div class="logo">
-    VenSur
-  </div>
+  <div class="logo">VenSur</div>
 
   <input
     type="text"
@@ -208,31 +172,18 @@ body {
 
 </div>
 
-
-<!-- BANNER -->
 <div class="banner-descuento">
   20% de descuento en tu primera compra
 </div>
 
-
-<!-- SECCIÓN -->
 <div class="seccion-descuento">
 
   <!-- HERO -->
   <div class="hero">
-
-    <!-- ESTA IMAGEN VIENE DE TU CARPETA -->
-    <img
-      src="auriculares-vensur.jpg"
-      alt="Auriculares VenSur"
-    >
-
+    <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
   </div>
 
-
-  <!-- PRODUCTOS -->
   <div class="productos">
-
 
     <!-- AURICULARES -->
     <div class="producto">
@@ -242,9 +193,7 @@ body {
         alt="Auriculares inalámbricos"
       >
 
-      <h3>
-        Auriculares Inalámbricos
-      </h3>
+      <h3>Auriculares Inalámbricos</h3>
 
       <div id="p1" class="precio-original">
         $20.000
@@ -259,10 +208,7 @@ body {
 
       <div id="badge1"></div>
 
-      <a
-        class="btn-wsp"
-        href="#"
-      >
+      <a class="btn-wsp" href="#">
         Consultar
       </a>
 
@@ -277,9 +223,7 @@ body {
         alt="Smartwatch"
       >
 
-      <h3>
-        Smartwatches
-      </h3>
+      <h3>Smartwatches</h3>
 
       <div id="p2" class="precio-original">
         $25.000
@@ -294,10 +238,7 @@ body {
 
       <div id="badge2"></div>
 
-      <a
-        class="btn-wsp"
-        href="#"
-      >
+      <a class="btn-wsp" href="#">
         Consultar
       </a>
 
@@ -312,9 +253,7 @@ body {
         alt="Funda transparente MagSafe para iPhone"
       >
 
-      <h3>
-        Fundas para Celular
-      </h3>
+      <h3>Fundas para Celular</h3>
 
       <div id="p3" class="precio-original">
         $12.000
@@ -329,26 +268,19 @@ body {
 
       <div id="badge3"></div>
 
-      <a
-        class="btn-wsp"
-        href="#"
-      >
+      <a class="btn-wsp" href="#">
         Consultar
       </a>
 
     </div>
 
   </div>
-
 </div>
 
 
 <script>
 
-/* =========================
-   BUSCADOR
-========================= */
-
+/* BUSCADOR */
 function buscarProductos() {
 
   const input = document
@@ -357,59 +289,43 @@ function buscarProductos() {
     .toLowerCase()
     .trim();
 
-  const productos =
-    document.querySelectorAll(".producto");
+  const productos = document.querySelectorAll(".producto");
 
   productos.forEach(producto => {
 
-    const nombre =
-      producto
-        .querySelector("h3")
-        .textContent
-        .toLowerCase();
+    const nombre = producto
+      .querySelector("h3")
+      .textContent
+      .toLowerCase();
 
     if (nombre.includes(input)) {
-
       producto.style.display = "";
-
     } else {
-
       producto.style.display = "none";
-
     }
 
   });
-
 }
 
 
-/* =========================
-   DESCUENTO
-========================= */
-
+/* DESCUENTO */
 function aplicarDescuento(id, base, boton) {
 
   if (boton.classList.contains("usado")) {
     return;
   }
 
-  const precio =
-    document.getElementById(id);
+  const precio = document.getElementById(id);
 
-  const numeroBadge =
-    id.replace("p", "");
+  const numeroBadge = id.replace("p", "");
 
-  const badge =
-    document.getElementById(
-      "badge" + numeroBadge
-    );
+  const badge = document.getElementById(
+    "badge" + numeroBadge
+  );
 
-  const nuevo =
-    base * 0.8;
-
+  const nuevo = base * 0.8;
 
   precio.innerHTML =
-
     '<span class="precio-tachado">$' +
     base.toLocaleString("es-AR") +
     '</span><br>' +
@@ -418,16 +334,13 @@ function aplicarDescuento(id, base, boton) {
     Math.round(nuevo).toLocaleString("es-AR") +
     '</span>';
 
-
   badge.innerHTML =
     '<div class="badge">-20% aplicado</div>';
-
 
   boton.classList.add("usado");
 
   boton.innerText =
     "Descuento aplicado";
-
 }
 
 </script>
