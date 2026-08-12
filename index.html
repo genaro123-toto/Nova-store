@@ -141,9 +141,10 @@ body {
     <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
   </div>
   <div class="productos">
+
 <!-- AURICULARES -->
 <div class="producto">
-  <img src="https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46">
+  <img src="https://yamada-denkiweb-media.com/wp-content/uploads/2024/09/AdobeStock_332698170-scaled-1.jpeg">
   <h3>Auriculares Inalámbricos</h3>
   <div id="p1" class="precio-original">$15.000</div>
   <button class="btn-descuento" onclick="aplicarDescuento('p1',15000,this)">
@@ -152,6 +153,7 @@ body {
   <div id="badge1"></div>
   <a class="btn-wsp" href="#">Consultar</a>
 </div>
+
 <!-- SMARTWATCH -->
 <div class="producto">
   <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d">
@@ -163,9 +165,10 @@ body {
   <div id="badge2"></div>
   <a class="btn-wsp" href="#">Consultar</a>
 </div>
+
 <!-- FUNDAS -->
 <div class="producto">
-  <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc">
+  <img src="https://www.custommacbd.com/cdn/shop/files/iphone-15-pro-max-clear-magsafe-case-white-Custom-Mac-BD_24a509bc-3a6b-4787-b822-8bbc22d59f11.jpg?v=1699093994">
   <h3>Fundas para Celular</h3>
   <div id="p3" class="precio-original">$10.000</div>
   <button class="btn-descuento" onclick="aplicarDescuento('p3',10000,this)">
@@ -174,8 +177,10 @@ body {
   <div id="badge3"></div>
   <a class="btn-wsp" href="#">Consultar</a>
 </div>
+
   </div>
 </div>
+
 <script>
 function buscarProductos() {
   let input = document.getElementById("buscador").value.toLowerCase();
@@ -185,14 +190,17 @@ function buscarProductos() {
     p.style.display = texto.includes(input) ? "block" : "none";
   });
 }
+
 function aplicarDescuento(id, base, boton) {
   if (boton.classList.contains("usado")) return;
   let precio = document.getElementById(id);
   let badge = document.getElementById("badge" + id.replace("p",""));
   let nuevo = base * 0.8;
+
   precio.innerHTML = 
     '<span class="precio-tachado">$' + base.toLocaleString() + '</span><br>' +
     '<span class="precio-nuevo">$' + Math.round(nuevo).toLocaleString() + '</span>';
+
   badge.innerHTML = '<div class="badge">-20% aplicado</div>';
   boton.classList.add("usado");
   boton.innerText = "Descuento aplicado";
