@@ -238,7 +238,7 @@ body {
     <div class="producto">
 
       <img
-        src="https://mykubek.com/cdn/shop/files/clear-magsafe-iphone-case.jpg"
+        src="https://shoplineimg.com/64b5f982f861d40067631464/654216057e49d7001d2ac4e3/800x.png"
         alt="Funda transparente MagSafe para iPhone"
       >
 
@@ -295,15 +295,14 @@ function buscarProductos() {
 
 function aplicarDescuento(id, base, boton) {
 
-  if (boton.classList.contains("usado"))
-    return;
+  if (boton.classList.contains("usado")) return;
 
   let precio =
     document.getElementById(id);
 
   let badge =
     document.getElementById(
-      "badge" + id.replace("p","")
+      "badge" + id.replace("p", "")
     );
 
   let nuevo =
@@ -313,7 +312,6 @@ function aplicarDescuento(id, base, boton) {
     '<span class="precio-tachado">$' +
     base.toLocaleString() +
     '</span><br>' +
-
     '<span class="precio-nuevo">$' +
     Math.round(nuevo).toLocaleString() +
     '</span>';
