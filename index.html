@@ -1,341 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>VenSur | Tienda Online</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f5f6f8;
-      color: #171717;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      background: #111827;
-      color: white;
-      padding: 20px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 4px 15px rgba(0,0,0,.12);
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: #22c55e;
-    }
-
-    .search {
-      width: min(400px, 50%);
-      padding: 12px 16px;
-      border: none;
-      outline: none;
-      border-radius: 12px;
-      font-size: 15px;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      padding: 70px 7% 45px;
-      background: linear-gradient(135deg, #111827, #1f2937);
-      color: white;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 6vw, 58px);
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      color: #d1d5db;
-      font-size: 18px;
-    }
-
-    /* =========================
-       PRODUCTOS
-    ========================= */
-
-    .products-section {
-      padding: 50px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 30px;
-      margin-bottom: 35px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 25px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0,0,0,.07);
-      transition: .25s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.12);
-    }
-
-    .product img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .product-content {
-      padding: 22px;
-    }
-
-    .product h3 {
-      font-size: 21px;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-size: 23px;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
-
-    .order-btn {
-      width: 100%;
-      border: none;
-      padding: 14px;
-      border-radius: 12px;
-      background: #22c55e;
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .order-btn:hover {
-      background: #16a34a;
-    }
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    .modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.65);
-      z-index: 500;
-      padding: 20px;
-      overflow-y: auto;
-    }
-
-    .modal.active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .modal-box {
-      background: white;
-      width: 100%;
-      max-width: 560px;
-      border-radius: 22px;
-      padding: 28px;
-      position: relative;
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      animation: aparecer .2s ease;
-    }
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .close {
-      position: absolute;
-      right: 18px;
-      top: 15px;
-      border: none;
-      background: #f3f4f6;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .modal-title {
-      font-size: 27px;
-      margin-bottom: 5px;
-      padding-right: 40px;
-    }
-
-    .modal-subtitle {
-      color: #6b7280;
-      margin-bottom: 25px;
-    }
-
-    /* =========================
-       FORMULARIO
-    ========================= */
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 13px 14px;
-      border: 1px solid #d1d5db;
-      border-radius: 11px;
-      outline: none;
-      font-size: 15px;
-      background: white;
-      font-family: inherit;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      border-color: #22c55e;
-      box-shadow: 0 0 0 3px rgba(34,197,94,.12);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
-
-    .total {
-      background: #f3f4f6;
-      padding: 16px;
-      border-radius: 12px;
-      margin: 22px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .total strong {
-      font-size: 22px;
-    }
-
-    .whatsapp-btn {
-      width: 100%;
-      border: none;
-      padding: 16px;
-      border-radius: 13px;
-      background: #25D366;
-      color: white;
-      font-size: 17px;
-      font-weight: 800;
-      cursor: pointer;
-      transition: .2s;
-    }
-
-    .whatsapp-btn:hover {
-      background: #1ebe5d;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #111827;
-      color: #9ca3af;
-      text-align: center;
-      padding: 30px 20px;
-      margin-top: 20px;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
-    @media (max-width: 650px) {
-
-      header {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search {
-        width: 100%;
-      }
-
-      .hero {
-        padding: 50px 20px 35px;
-      }
-
-      .products-section {
-        padding: 40px 20px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .modal-box {
-        padding: 22px;
-      }
-    }
-  </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VenSur</title>
@@ -490,78 +155,9 @@ body {
 
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
-
-  <header>
-    <div class="logo">
-      Ven<span>Sur</span>
-    </div>
-
-    <input
-      type="text"
-      id="searchInput"
-      class="search"
-      placeholder="Buscar productos..."
-      oninput="buscarProductos()"
-    >
-  </header>
-
-
-  <!-- =========================
-       HERO
-  ========================= -->
 <div class="header">
   <div class="logo">VenSur</div>
 
-  <section class="hero">
-    <h1>Encontrá lo que buscás</h1>
-    <p>Productos seleccionados, atención rápida y pedidos por WhatsApp.</p>
-  </section>
-
-
-  <!-- =========================
-       PRODUCTOS
-  ========================= -->
-
-  <section class="products-section">
-
-    <h2 class="section-title">Nuestros productos</h2>
-
-    <div class="products" id="productsContainer">
-
-      <!-- AURICULARES -->
-
-      <article
-        class="product"
-        data-name="Auriculares Inalámbricos"
-      >
-
-        <img
-          src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85"
-          alt="Auriculares inalámbricos"
-        >
-
-        <div class="product-content">
-
-          <h3>Auriculares Inalámbricos</h3>
-
-          <div class="price">$20.000</div>
-
-          <button
-            class="order-btn"
-            onclick="abrirPedido('Auriculares Inalámbricos', 20000)"
-          >
-            🛒 Comprar / Pedir
-          </button>
-
-        </div>
-
-      </article>
-
-
-      <!-- SMARTWATCH -->
   <input
     type="text"
     id="buscador"
@@ -570,21 +166,12 @@ body {
   >
 </div>
 
-      <article
-        class="product"
-        data-name="Smartwatches"
-      >
 <div class="banner-descuento">
   20% de descuento en tu primera compra
 </div>
 
-        <img
-          src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=900&q=85"
-          alt="Smartwatch"
-        >
 <div class="seccion-descuento">
 
-        <div class="product-content">
   <!-- IMAGEN GRANDE: ESTÁ GUARDADA DENTRO DEL PROPIO HTML -->
   <div class="hero">
     <img
@@ -593,25 +180,15 @@ body {
     >
   </div>
 
-          <h3>Smartwatches</h3>
   <div class="productos">
 
-          <div class="price">$25.000</div>
     <div class="producto">
       <img src="auriculares-vensur.jpg" alt="Auriculares inalámbricos">
 
-          <button
-            class="order-btn"
-            onclick="abrirPedido('Smartwatches', 25000)"
-          >
-            🛒 Comprar / Pedir
-          </button>
       <h3>Auriculares Inalámbricos</h3>
 
-        </div>
       <div id="p1" class="precio-original">$20.000</div>
 
-      </article>
       <button class="btn-descuento"
         onclick="aplicarDescuento('p1', 20000, this)">
         Aplicar descuento →
@@ -619,7 +196,6 @@ body {
 
       <div id="badge1"></div>
 
-      <!-- FUNDAS -->
       <a class="btn-wsp"
         href="https://wa.me/5492964609317?text=Hola%2C%20me%20interesaban%20los%20Auriculares%20Inal%C3%A1mbricos."
         target="_blank">
@@ -627,42 +203,21 @@ body {
       </a>
     </div>
 
-      <article
-        class="product"
-        data-name="Fundas para Celular"
     <div class="producto">
       <img
         src="https://images.unsplash.com/photo-1544117519-31a4b719223d"
         alt="Smartwatch"
       >
 
-        <img
-          src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=85"
-          alt="Funda para celular"
-        >
-
-        <div class="product-content">
       <h3>Smartwatches</h3>
 
-          <h3>Fundas para Celular</h3>
       <div id="p2" class="precio-original">$25.000</div>
 
-          <div class="price">$12.000</div>
-
-          <button
-            class="order-btn"
-            onclick="abrirPedido('Fundas para Celular', 12000)"
-          >
-            🛒 Comprar / Pedir
-          </button>
-
-        </div>
       <button class="btn-descuento"
         onclick="aplicarDescuento('p2', 25000, this)">
         Aplicar descuento →
       </button>
 
-      </article>
       <div id="badge2"></div>
 
       <a class="btn-wsp"
@@ -672,213 +227,21 @@ body {
       </a>
     </div>
 
-  </section>
-
-
-  <!-- =========================
-       MODAL DE PEDIDO
-  ========================= -->
-
-  <div
-    class="modal"
-    id="orderModal"
-    onclick="cerrarModalFuera(event)"
-  >
-
-    <div class="modal-box">
-
-      <button
-        class="close"
-        onclick="cerrarPedido()"
-        aria-label="Cerrar"
     <div class="producto">
       <img
         src="https://shoplineimg.com/64b5f982f861d40067631464/654216057e49d7001d2ac4e3/800x.png"
         alt="Funda transparente MagSafe para iPhone"
       >
-        ×
-      </button>
-
-      <h2 class="modal-title">Completar pedido</h2>
-
-      <p class="modal-subtitle">
-        Elegí las opciones y enviá el pedido directamente por WhatsApp.
-      </p>
-
-
-      <form id="orderForm">
-
-        <!-- PRODUCTO -->
-
-        <div class="form-group">
-
-          <label for="producto">
-            Producto
-          </label>
-
-          <select id="producto" onchange="actualizarPrecio()">
-
-            <option value="Auriculares Inalámbricos">
-              Auriculares Inalámbricos
-            </option>
-
-            <option value="Smartwatches">
-              Smartwatches
-            </option>
-
-            <option value="Fundas para Celular">
-              Fundas para Celular
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- MODELO -->
-
-        <div class="form-group">
-
-          <label for="modelo">
-            Modelo
-          </label>
-
-          <select id="modelo">
-
-            <option value="Modelo estándar">
-              Modelo estándar
-            </option>
-
-            <option value="Pro">
-              Pro
-            </option>
-
-            <option value="Premium">
-              Premium
-            </option>
-
-          </select>
-
-        </div>
 
       <h3>Fundas para Celular</h3>
 
-        <!-- COLOR + CANTIDAD -->
       <div id="p3" class="precio-original">$12.000</div>
 
-        <div class="form-row">
-
-          <div class="form-group">
-
-            <label for="color">
-              Color
-            </label>
-
-            <select id="color">
-
-              <option value="Negro">
-                Negro
-              </option>
-
-              <option value="Blanco">
-                Blanco
-              </option>
-
-              <option value="Azul">
-                Azul
-              </option>
-
-              <option value="Rojo">
-                Rojo
-              </option>
-
-            </select>
-
-          </div>
-
-
-          <div class="form-group">
-
-            <label for="cantidad">
-              Cantidad
-            </label>
-
-            <input
-              type="number"
-              id="cantidad"
-              value="1"
-              min="1"
-              max="20"
-              onchange="actualizarPrecio()"
-            >
-
-          </div>
-
-        </div>
-
-
-        <!-- PUNTO DE ENCUENTRO -->
-
-        <div class="form-group">
-
-          <label for="encuentro">
-            📍 Punto de encuentro
-          </label>
-
-          <input
-            type="text"
-            id="encuentro"
-            placeholder="Ej: Plaza principal, esquina de..."
-            required
-          >
-
-        </div>
-
-
-        <!-- OBSERVACIONES -->
-
-        <div class="form-group">
-
-          <label for="observaciones">
-            📝 Observaciones
-          </label>
-
-          <textarea
-            id="observaciones"
-            rows="3"
-            placeholder="¿Querés agregar alguna indicación?"
-          ></textarea>
-
-        </div>
-
-
-        <!-- TOTAL -->
-
-        <div class="total">
-
-          <span>Total</span>
-
-          <strong id="total">
-            $20.000
-          </strong>
-
-        </div>
-
-
-        <!-- WHATSAPP -->
-
-        <button
-          type="submit"
-          class="whatsapp-btn"
-        >
-          💬 Enviar pedido por WhatsApp
-        </button>
       <button class="btn-descuento"
         onclick="aplicarDescuento('p3', 12000, this)">
         Aplicar descuento →
       </button>
 
-      </form>
       <div id="badge3"></div>
 
       <a class="btn-wsp"
@@ -889,281 +252,6 @@ body {
     </div>
 
   </div>
-
-
-  <!-- =========================
-       FOOTER
-  ========================= -->
-
-  <footer>
-
-    <p>
-      <strong>VenSur</strong> — Tu tienda online
-    </p>
-
-    <p style="margin-top:8px;">
-      © 2026 VenSur. Todos los derechos reservados.
-    </p>
-
-  </footer>
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
-
-  <script>
-
-    /*
-      ============================================
-      IMPORTANTE
-      ============================================
-      CAMBIÁ ESTE NÚMERO POR TU WHATSAPP.
-      Formato:
-      código de país + número
-      Argentina:
-      549 + código de área + número
-      Ejemplo ficticio:
-      5491123456789
-      NO pongas:
-      +
-      espacios
-      guiones
-      paréntesis
-    */
-
-    const WHATSAPP_NUMBER = "549XXXXXXXXXX";
-
-
-    /*
-      PRECIOS
-    */
-
-    const precios = {
-      "Auriculares Inalámbricos": 20000,
-      "Smartwatches": 25000,
-      "Fundas para Celular": 12000
-    };
-
-
-    /*
-      VARIABLE DEL PRODUCTO ACTUAL
-    */
-
-    let precioActual = 20000;
-
-
-    /*
-      ABRIR PEDIDO
-    */
-
-    function abrirPedido(producto, precio) {
-
-      document.getElementById("orderModal")
-        .classList.add("active");
-
-      document.getElementById("producto").value = producto;
-
-      precioActual = precio;
-
-      actualizarPrecio();
-
-    }
-
-
-    /*
-      CERRAR PEDIDO
-    */
-
-    function cerrarPedido() {
-
-      document.getElementById("orderModal")
-        .classList.remove("active");
-
-    }
-
-
-    /*
-      CERRAR AL HACER CLICK AFUERA
-    */
-
-    function cerrarModalFuera(event) {
-
-      if (event.target.id === "orderModal") {
-        cerrarPedido();
-      }
-
-    }
-
-
-    /*
-      ACTUALIZAR PRECIO
-    */
-
-    function actualizarPrecio() {
-
-      const producto =
-        document.getElementById("producto").value;
-
-      const cantidad =
-        Number(document.getElementById("cantidad").value) || 1;
-
-      precioActual = precios[producto] || 0;
-
-      const total = precioActual * cantidad;
-
-      document.getElementById("total").textContent =
-        "$" + total.toLocaleString("es-AR");
-
-    }
-
-
-    /*
-      CAMBIAR PRODUCTO
-    */
-
-    document.getElementById("producto")
-      .addEventListener("change", actualizarPrecio);
-
-
-    /*
-      ENVIAR A WHATSAPP
-    */
-
-    document.getElementById("orderForm")
-      .addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-
-        const producto =
-          document.getElementById("producto").value;
-
-        const modelo =
-          document.getElementById("modelo").value;
-
-        const color =
-          document.getElementById("color").value;
-
-        const cantidad =
-          document.getElementById("cantidad").value;
-
-        const encuentro =
-          document.getElementById("encuentro").value.trim();
-
-        const observaciones =
-          document.getElementById("observaciones").value.trim();
-
-
-        const total =
-          precioActual * Number(cantidad);
-
-
-        /*
-          MENSAJE QUE RECIBÍS
-        */
-
-        let mensaje =
-
-`🛒 *NUEVO PEDIDO - VENSUR*
-📦 *Producto:* ${producto}
-🔧 *Modelo:* ${modelo}
-🎨 *Color:* ${color}
-🔢 *Cantidad:* ${cantidad}
-📍 *Punto de encuentro:*
-${encuentro}
-💰 *Total:* $${total.toLocaleString("es-AR")}`;
-
-
-        if (observaciones !== "") {
-
-          mensaje +=
-
-`
-📝 *Observaciones:*
-${observaciones}`;
-
-        }
-
-
-        mensaje += `
-¡Hola! Quiero realizar este pedido.`;
-
-
-        /*
-          CREAR URL DE WHATSAPP
-        */
-
-        const url =
-          "https://wa.me/" +
-          WHATSAPP_NUMBER +
-          "?text=" +
-          encodeURIComponent(mensaje);
-
-
-        /*
-          ABRIR WHATSAPP
-        */
-
-        window.open(url, "_blank");
-
-      });
-
-
-    /*
-      BUSCADOR
-    */
-
-    function buscarProductos() {
-
-      const texto =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
-
-
-      const productos =
-        document.querySelectorAll(".product");
-
-
-      productos.forEach(producto => {
-
-        const nombre =
-          producto
-          .dataset
-          .name
-          .toLowerCase();
-
-
-        if (nombre.includes(texto)) {
-
-          producto.style.display = "";
-
-        } else {
-
-          producto.style.display = "none";
-
-        }
-
-      });
-
-    }
-
-
-    /*
-      ESCAPE PARA CERRAR MODAL
-    */
-
-    document.addEventListener("keydown", function(event) {
-
-      if (event.key === "Escape") {
-        cerrarPedido();
-      }
-
-    });
-
-  </script>
 </div>
 
 <script>
