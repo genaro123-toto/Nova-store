@@ -13,22 +13,10 @@
       padding: 0;
     }
 
-    :root {
-      --verde: #22c55e;
-      --verde-dark: #16a34a;
-      --negro: #111827;
-      --texto: #171717;
-      --gris: #6b7280;
-      --fondo: #f5f6f8;
-      --blanco: #ffffff;
-      --borde: #e5e7eb;
-    }
-
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--fondo);
-      color: var(--texto);
-      min-height: 100vh;
+      background: #f5f5f5;
+      color: #171717;
     }
 
     /* =========================
@@ -36,7 +24,7 @@
     ========================= */
 
     header {
-      background: var(--blanco);
+      background: #ffffff;
       padding: 18px 7%;
       display: flex;
       align-items: center;
@@ -45,50 +33,35 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid var(--borde);
+      box-shadow: 0 2px 15px rgba(0,0,0,.06);
     }
 
     .logo {
-      font-size: 30px;
+      font-size: 29px;
       font-weight: 900;
-      letter-spacing: -1.5px;
-      color: var(--negro);
+      letter-spacing: -1px;
+      color: #111827;
       white-space: nowrap;
     }
 
     .logo span {
-      color: var(--verde);
-    }
-
-    .search-wrapper {
-      width: min(430px, 50%);
-      position: relative;
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #9ca3af;
-      font-size: 17px;
-      pointer-events: none;
+      color: #22c55e;
     }
 
     .search {
-      width: 100%;
-      padding: 13px 16px 13px 43px;
-      border: 1px solid var(--borde);
+      width: min(400px, 50%);
+      padding: 12px 17px;
+      border: 1px solid #e5e7eb;
       outline: none;
-      border-radius: 13px;
+      border-radius: 12px;
       font-size: 15px;
-      background: #f9fafb;
+      background: #f8f8f8;
       transition: .2s;
     }
 
     .search:focus {
       background: white;
-      border-color: var(--verde);
+      border-color: #22c55e;
       box-shadow: 0 0 0 3px rgba(34,197,94,.10);
     }
 
@@ -97,31 +70,26 @@
     ========================= */
 
     .hero {
-      padding: 75px 7% 65px;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(34,197,94,.12), transparent 35%),
-        linear-gradient(135deg, #111827, #1f2937);
-      color: white;
+      padding: 70px 7% 55px;
+      background: linear-gradient(135deg, #f8f8f8, #eeeeee);
       text-align: center;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 6vw, 58px);
+      font-size: clamp(34px, 6vw, 55px);
       font-weight: 900;
       letter-spacing: -2px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
+      color: #111827;
     }
 
     .hero h1 span {
-      color: var(--verde);
+      color: #22c55e;
     }
 
     .hero p {
-      color: #d1d5db;
-      font-size: 18px;
-      max-width: 650px;
-      margin: auto;
-      line-height: 1.6;
+      color: #6b7280;
+      font-size: 17px;
     }
 
     /* =========================
@@ -129,103 +97,122 @@
     ========================= */
 
     .products-section {
-      padding: 55px 7%;
+      padding: 50px 7%;
       max-width: 1400px;
       margin: auto;
     }
 
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
     .section-title {
+      text-align: center;
       font-size: 30px;
       font-weight: 850;
-      letter-spacing: -.8px;
-    }
-
-    .products-count {
-      color: var(--gris);
-      font-size: 14px;
+      margin-bottom: 35px;
+      color: #111827;
     }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
     }
 
     .product {
       background: white;
       border-radius: 18px;
       overflow: hidden;
-      border: 1px solid rgba(0,0,0,.04);
-      box-shadow: 0 7px 25px rgba(0,0,0,.055);
-      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 7px 25px rgba(0,0,0,.06);
+      transition: .25s ease;
     }
 
     .product:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 38px rgba(0,0,0,.10);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.11);
     }
 
-    .product-image-wrapper {
+    .product-image {
       position: relative;
+      background: #f3f3f3;
       overflow: hidden;
-      background: #f3f4f6;
     }
 
     .product img {
       width: 100%;
-      height: 245px;
+      height: 250px;
       object-fit: cover;
       display: block;
-      transition: transform .35s ease;
+      transition: .3s ease;
     }
 
     .product:hover img {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
+
+    /* =========================
+       DESCUENTO
+    ========================= */
 
     .discount-badge {
       position: absolute;
       top: 14px;
       left: 14px;
-      background: var(--verde);
+      background: #22c55e;
       color: white;
-      padding: 7px 11px;
+      padding: 8px 12px;
       border-radius: 9px;
-      font-size: 12px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 900;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(34,197,94,.25);
     }
 
     .product-content {
-      padding: 20px;
+      padding: 21px;
     }
 
     .product h3 {
-      font-size: 20px;
-      margin-bottom: 9px;
-      letter-spacing: -.3px;
+      font-size: 21px;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    /* =========================
+       PRECIOS
+    ========================= */
+
+    .price-box {
+      min-height: 61px;
+      margin-bottom: 15px;
+    }
+
+    .old-price {
+      display: none;
+      color: #9ca3af;
+      text-decoration: line-through;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+
+    .old-price.visible {
+      display: block;
     }
 
     .price {
       font-size: 23px;
       font-weight: 900;
-      margin-bottom: 18px;
+      color: #111827;
     }
 
-    .product-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
+    .discounted {
+      color: #16a34a;
     }
 
+    /* =========================
+       BOTONES PRODUCTO
+    ========================= */
+
+    .discount-btn,
     .order-btn,
-    .consult-btn {
+    .whatsapp-small-btn {
       width: 100%;
       border: none;
       padding: 13px;
@@ -236,44 +223,41 @@
       transition: .2s;
     }
 
+    .discount-btn {
+      background: #111827;
+      color: white;
+      margin-bottom: 9px;
+    }
+
+    .discount-btn:hover {
+      background: #1f2937;
+      transform: translateY(-1px);
+    }
+
+    .discount-btn.applied {
+      background: #dcfce7;
+      color: #15803d;
+      cursor: default;
+    }
+
     .order-btn {
-      background: var(--verde);
+      background: #22c55e;
       color: white;
     }
 
     .order-btn:hover {
-      background: var(--verde-dark);
+      background: #16a34a;
       transform: translateY(-1px);
     }
 
-    .consult-btn {
+    .whatsapp-small-btn {
       background: #f3f4f6;
       color: #111827;
+      margin-top: 9px;
     }
 
-    .consult-btn:hover {
+    .whatsapp-small-btn:hover {
       background: #e5e7eb;
-    }
-
-    /* =========================
-       SIN RESULTADOS
-    ========================= */
-
-    .no-results {
-      display: none;
-      text-align: center;
-      padding: 55px 20px;
-      color: var(--gris);
-    }
-
-    .no-results .icon {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .no-results h3 {
-      color: var(--texto);
-      margin-bottom: 7px;
     }
 
     /* =========================
@@ -304,51 +288,43 @@
       border-radius: 22px;
       padding: 28px;
       position: relative;
-      box-shadow: 0 25px 70px rgba(0,0,0,.25);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
       animation: aparecer .2s ease;
     }
 
     @keyframes aparecer {
       from {
         opacity: 0;
-        transform: translateY(18px) scale(.98);
+        transform: translateY(15px);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
     .close {
       position: absolute;
-      right: 17px;
+      right: 18px;
       top: 15px;
       border: none;
       background: #f3f4f6;
-      color: #374151;
-      width: 38px;
-      height: 38px;
+      width: 37px;
+      height: 37px;
       border-radius: 50%;
-      font-size: 21px;
+      font-size: 20px;
       cursor: pointer;
-      transition: .2s;
-    }
-
-    .close:hover {
-      background: #e5e7eb;
-      transform: rotate(5deg);
     }
 
     .modal-title {
       font-size: 28px;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       padding-right: 45px;
-      letter-spacing: -.7px;
     }
 
     .modal-subtitle {
-      color: var(--gris);
+      color: #6b7280;
       margin-bottom: 25px;
       line-height: 1.5;
     }
@@ -358,13 +334,13 @@
     ========================= */
 
     .form-group {
-      margin-bottom: 17px;
+      margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
       margin-bottom: 7px;
-      font-weight: 750;
+      font-weight: 700;
       font-size: 14px;
     }
 
@@ -379,19 +355,17 @@
       font-size: 15px;
       background: white;
       font-family: inherit;
-      transition: .2s;
     }
 
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--verde);
+      border-color: #22c55e;
       box-shadow: 0 0 0 3px rgba(34,197,94,.12);
     }
 
     .form-group textarea {
       resize: vertical;
-      min-height: 80px;
     }
 
     .form-row {
@@ -399,6 +373,10 @@
       grid-template-columns: 1fr 1fr;
       gap: 15px;
     }
+
+    /* =========================
+       TOTAL
+    ========================= */
 
     .total {
       background: #f3f4f6;
@@ -412,13 +390,16 @@
 
     .total span {
       font-weight: 700;
-      color: #4b5563;
     }
 
     .total strong {
       font-size: 23px;
-      color: var(--negro);
+      color: #16a34a;
     }
+
+    /* =========================
+       WHATSAPP
+    ========================= */
 
     .whatsapp-btn {
       width: 100%;
@@ -428,14 +409,13 @@
       background: #25D366;
       color: white;
       font-size: 17px;
-      font-weight: 850;
+      font-weight: 800;
       cursor: pointer;
       transition: .2s;
     }
 
     .whatsapp-btn:hover {
       background: #1ebe5d;
-      transform: translateY(-1px);
     }
 
     /* =========================
@@ -446,16 +426,16 @@
       background: #111827;
       color: #9ca3af;
       text-align: center;
-      padding: 32px 20px;
-      margin-top: 10px;
+      padding: 30px 20px;
+      margin-top: 20px;
     }
 
     footer strong {
       color: white;
     }
 
-    footer .green {
-      color: var(--verde);
+    footer span {
+      color: #22c55e;
     }
 
     /* =========================
@@ -474,40 +454,16 @@
         text-align: center;
       }
 
-      .search-wrapper {
+      .search {
         width: 100%;
       }
 
       .hero {
-        padding: 55px 20px 45px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1px;
-      }
-
-      .hero p {
-        font-size: 16px;
+        padding: 50px 20px 40px;
       }
 
       .products-section {
         padding: 40px 20px;
-      }
-
-      .section-header {
-        align-items: flex-end;
-      }
-
-      .section-title {
-        font-size: 25px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product img {
-        height: 260px;
       }
 
       .form-row {
@@ -515,19 +471,15 @@
         gap: 0;
       }
 
-      .modal {
-        padding: 12px;
-      }
-
       .modal-box {
         padding: 22px;
-        border-radius: 18px;
       }
     }
   </style>
 </head>
 
 <body>
+
 
   <!-- =========================
        HEADER
@@ -539,20 +491,13 @@
       Ven<span>Sur</span>
     </div>
 
-    <div class="search-wrapper">
-
-      <span class="search-icon">⌕</span>
-
-      <input
-        type="text"
-        id="searchInput"
-        class="search"
-        placeholder="Buscar productos..."
-        autocomplete="off"
-        oninput="buscarProductos()"
-      >
-
-    </div>
+    <input
+      type="text"
+      id="searchInput"
+      class="search"
+      placeholder="Buscar productos..."
+      oninput="buscarProductos()"
+    >
 
   </header>
 
@@ -568,7 +513,7 @@
     </h1>
 
     <p>
-      Productos seleccionados, atención rápida y pedidos fáciles por WhatsApp.
+      Productos seleccionados, atención rápida y pedidos por WhatsApp.
     </p>
 
   </section>
@@ -580,20 +525,9 @@
 
   <section class="products-section">
 
-    <div class="section-header">
-
-      <h2 class="section-title">
-        Nuestros productos
-      </h2>
-
-      <span
-        class="products-count"
-        id="productsCount"
-      >
-        3 productos
-      </span>
-
-    </div>
+    <h2 class="section-title">
+      Nuestros productos
+    </h2>
 
 
     <div
@@ -601,25 +535,30 @@
       id="productsContainer"
     >
 
-      <!-- AURICULARES -->
+
+      <!-- =========================
+           AURICULARES
+      ========================= -->
 
       <article
         class="product"
         data-name="Auriculares Inalámbricos"
+        data-price="20000"
       >
 
-        <div class="product-image-wrapper">
+        <div class="product-image">
 
-          <span class="discount-badge">
-            Oferta
-          </span>
+          <div class="discount-badge">
+            20% OFF
+          </div>
 
           <img
-            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85"
+            src="https://genaro123-toto.github.io/Nova-store/auriculares-vensur.jpg"
             alt="Auriculares inalámbricos"
           >
 
         </div>
+
 
         <div class="product-content">
 
@@ -627,52 +566,78 @@
             Auriculares Inalámbricos
           </h3>
 
-          <div class="price">
-            $20.000
+
+          <div class="price-box">
+
+            <div
+              class="old-price"
+              id="old-Auriculares"
+            >
+              $20.000
+            </div>
+
+            <div
+              class="price"
+              id="price-Auriculares"
+            >
+              $20.000
+            </div>
+
           </div>
 
-          <div class="product-actions">
 
-            <button
-              class="order-btn"
-              onclick="abrirPedido('Auriculares Inalámbricos')"
-            >
-              🛒 Comprar / Pedir
-            </button>
+          <button
+            class="discount-btn"
+            id="discount-Auriculares"
+            onclick="aplicarDescuento('Auriculares')"
+          >
+            Aplicar descuento →
+          </button>
 
-            <button
-              class="consult-btn"
-              onclick="consultarWhatsApp('Auriculares Inalámbricos', 20000)"
-            >
-              💬 Consultar por WhatsApp
-            </button>
 
-          </div>
+          <button
+            class="order-btn"
+            onclick="abrirPedido('Auriculares Inalámbricos')"
+          >
+            🛒 Comprar / Pedir
+          </button>
+
+
+          <button
+            class="whatsapp-small-btn"
+            onclick="consultarWhatsApp('Auriculares Inalámbricos', 20000)"
+          >
+            💬 Consultar por WhatsApp
+          </button>
 
         </div>
 
       </article>
 
 
-      <!-- SMARTWATCH -->
+      <!-- =========================
+           SMARTWATCH
+      ========================= -->
 
       <article
         class="product"
         data-name="Smartwatches"
+        data-price="25000"
       >
 
-        <div class="product-image-wrapper">
+        <div class="product-image">
 
-          <span class="discount-badge">
-            Oferta
-          </span>
+          <div class="discount-badge">
+            20% OFF
+          </div>
 
           <img
-            src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=900&q=85"
+            src="https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=85"
             alt="Smartwatch"
           >
 
         </div>
+
 
         <div class="product-content">
 
@@ -680,52 +645,78 @@
             Smartwatches
           </h3>
 
-          <div class="price">
-            $25.000
+
+          <div class="price-box">
+
+            <div
+              class="old-price"
+              id="old-Smartwatch"
+            >
+              $25.000
+            </div>
+
+            <div
+              class="price"
+              id="price-Smartwatch"
+            >
+              $25.000
+            </div>
+
           </div>
 
-          <div class="product-actions">
 
-            <button
-              class="order-btn"
-              onclick="abrirPedido('Smartwatches')"
-            >
-              🛒 Comprar / Pedir
-            </button>
+          <button
+            class="discount-btn"
+            id="discount-Smartwatch"
+            onclick="aplicarDescuento('Smartwatch')"
+          >
+            Aplicar descuento →
+          </button>
 
-            <button
-              class="consult-btn"
-              onclick="consultarWhatsApp('Smartwatches', 25000)"
-            >
-              💬 Consultar por WhatsApp
-            </button>
 
-          </div>
+          <button
+            class="order-btn"
+            onclick="abrirPedido('Smartwatches')"
+          >
+            🛒 Comprar / Pedir
+          </button>
+
+
+          <button
+            class="whatsapp-small-btn"
+            onclick="consultarWhatsApp('Smartwatches', 25000)"
+          >
+            💬 Consultar por WhatsApp
+          </button>
 
         </div>
 
       </article>
 
 
-      <!-- FUNDAS -->
+      <!-- =========================
+           FUNDAS
+      ========================= -->
 
       <article
         class="product"
         data-name="Fundas para Celular"
+        data-price="12000"
       >
 
-        <div class="product-image-wrapper">
+        <div class="product-image">
 
-          <span class="discount-badge">
-            Oferta
-          </span>
+          <div class="discount-badge">
+            20% OFF
+          </div>
 
           <img
-            src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=900&q=85"
-            alt="Funda para celular"
+            src="https://shoplineimg.com/64b5f982f861d40067631464/654216057e49d7001d2ac4e3/800x.png"
+            alt="Funda transparente MagSafe para iPhone"
           >
 
         </div>
+
 
         <div class="product-content">
 
@@ -733,53 +724,54 @@
             Fundas para Celular
           </h3>
 
-          <div class="price">
-            $12.000
+
+          <div class="price-box">
+
+            <div
+              class="old-price"
+              id="old-Funda"
+            >
+              $12.000
+            </div>
+
+            <div
+              class="price"
+              id="price-Funda"
+            >
+              $12.000
+            </div>
+
           </div>
 
-          <div class="product-actions">
 
-            <button
-              class="order-btn"
-              onclick="abrirPedido('Fundas para Celular')"
-            >
-              🛒 Comprar / Pedir
-            </button>
+          <button
+            class="discount-btn"
+            id="discount-Funda"
+            onclick="aplicarDescuento('Funda')"
+          >
+            Aplicar descuento →
+          </button>
 
-            <button
-              class="consult-btn"
-              onclick="consultarWhatsApp('Fundas para Celular', 12000)"
-            >
-              💬 Consultar por WhatsApp
-            </button>
 
-          </div>
+          <button
+            class="order-btn"
+            onclick="abrirPedido('Fundas para Celular')"
+          >
+            🛒 Comprar / Pedir
+          </button>
+
+
+          <button
+            class="whatsapp-small-btn"
+            onclick="consultarWhatsApp('Fundas para Celular', 12000)"
+          >
+            💬 Consultar por WhatsApp
+          </button>
 
         </div>
 
       </article>
 
-    </div>
-
-
-    <!-- SIN RESULTADOS -->
-
-    <div
-      class="no-results"
-      id="noResults"
-    >
-
-      <div class="icon">
-        🔎
-      </div>
-
-      <h3>
-        No encontramos ese producto
-      </h3>
-
-      <p>
-        Probá buscando con otro nombre.
-      </p>
 
     </div>
 
@@ -787,7 +779,7 @@
 
 
   <!-- =========================
-       MODAL DE PEDIDO
+       MODAL
   ========================= -->
 
   <div
@@ -797,6 +789,7 @@
   >
 
     <div class="modal-box">
+
 
       <button
         class="close"
@@ -811,12 +804,14 @@
         Completar pedido
       </h2>
 
+
       <p class="modal-subtitle">
-        Elegí las opciones y enviá tu pedido directamente por WhatsApp.
+        Elegí las opciones y enviá el pedido directamente por WhatsApp.
       </p>
 
 
       <form id="orderForm">
+
 
         <!-- PRODUCTO -->
 
@@ -875,7 +870,7 @@
         </div>
 
 
-        <!-- COLOR + CANTIDAD -->
+        <!-- COLOR Y CANTIDAD -->
 
         <div class="form-row">
 
@@ -1001,7 +996,7 @@
   <footer>
 
     <p>
-      <strong>Ven<span class="green">Sur</span></strong>
+      <strong>Ven<span>Sur</span></strong>
       — Tu tienda online
     </p>
 
@@ -1018,36 +1013,29 @@
 
   <script>
 
-    /*
-      ============================================
-      WHATSAPP
-      ============================================
-
-      CAMBIÁ ESTE NÚMERO POR TU WHATSAPP.
-
-      Argentina:
-      549 + código de área + número
-
-      Ejemplo:
-      5491123456789
-
-      NO pongas:
-      +
-      espacios
-      guiones
-      paréntesis
-    */
+    /* =========================================
+       WHATSAPP
+    ========================================= */
 
     const WHATSAPP_NUMBER = "549XXXXXXXXXX";
 
 
-    /*
-      ============================================
-      PRECIOS
-      ============================================
-    */
+    /* =========================================
+       PRECIOS ORIGINALES
+    ========================================= */
 
-    const precios = {
+    const preciosOriginales = {
+      "Auriculares Inalámbricos": 20000,
+      "Smartwatches": 25000,
+      "Fundas para Celular": 12000
+    };
+
+
+    /* =========================================
+       PRECIOS ACTUALES
+    ========================================= */
+
+    const preciosActuales = {
       "Auriculares Inalámbricos": 20000,
       "Smartwatches": 25000,
       "Fundas para Celular": 12000
@@ -1057,42 +1045,129 @@
     let precioActual = 20000;
 
 
-    /*
-      ============================================
-      ABRIR PEDIDO
-      ============================================
-    */
+    /* =========================================
+       DESCUENTOS APLICADOS
+    ========================================= */
 
-    function abrirPedido(producto) {
+    const descuentosAplicados = {
+      "Auriculares Inalámbricos": false,
+      "Smartwatches": false,
+      "Fundas para Celular": false
+    };
 
-      const modal =
-        document.getElementById("orderModal");
 
-      const selector =
-        document.getElementById("producto");
+    /* =========================================
+       APLICAR 20% DE DESCUENTO
+    ========================================= */
 
-      modal.classList.add("active");
+    function aplicarDescuento(tipo) {
 
-      selector.value = producto;
+      let producto;
+      let precio;
+      let oldPrice;
+      let price;
+      let button;
 
-      precioActual = precios[producto] || 0;
 
-      document.getElementById("cantidad").value = 1;
+      if (tipo === "Auriculares") {
 
-      actualizarPrecio();
+        producto = "Auriculares Inalámbricos";
+        precio = 20000;
+        oldPrice = document.getElementById("old-Auriculares");
+        price = document.getElementById("price-Auriculares");
+        button = document.getElementById("discount-Auriculares");
 
-      setTimeout(() => {
-        document.getElementById("modelo").focus();
-      }, 100);
+      }
+
+
+      if (tipo === "Smartwatch") {
+
+        producto = "Smartwatches";
+        precio = 25000;
+        oldPrice = document.getElementById("old-Smartwatch");
+        price = document.getElementById("price-Smartwatch");
+        button = document.getElementById("discount-Smartwatch");
+
+      }
+
+
+      if (tipo === "Funda") {
+
+        producto = "Fundas para Celular";
+        precio = 12000;
+        oldPrice = document.getElementById("old-Funda");
+        price = document.getElementById("price-Funda");
+        button = document.getElementById("discount-Funda");
+
+      }
+
+
+      if (descuentosAplicados[producto]) {
+        return;
+      }
+
+
+      const precioDescuento =
+        precio * 0.80;
+
+
+      preciosActuales[producto] =
+        precioDescuento;
+
+
+      descuentosAplicados[producto] =
+        true;
+
+
+      oldPrice.classList.add("visible");
+
+
+      price.textContent =
+        "$" +
+        precioDescuento.toLocaleString("es-AR");
+
+
+      price.classList.add("discounted");
+
+
+      button.textContent =
+        "✓ Descuento aplicado";
+
+
+      button.classList.add("applied");
 
     }
 
 
-    /*
-      ============================================
-      CERRAR PEDIDO
-      ============================================
-    */
+    /* =========================================
+       ABRIR PEDIDO
+    ========================================= */
+
+    function abrirPedido(producto) {
+
+      document
+        .getElementById("orderModal")
+        .classList.add("active");
+
+
+      document
+        .getElementById("producto")
+        .value = producto;
+
+
+      document
+        .getElementById("cantidad")
+        .value = 1;
+
+
+      actualizarPrecio();
+
+    }
+
+
+    /* =========================================
+       CERRAR PEDIDO
+    ========================================= */
 
     function cerrarPedido() {
 
@@ -1103,31 +1178,32 @@
     }
 
 
-    /*
-      ============================================
-      CERRAR HACIENDO CLICK AFUERA
-      ============================================
-    */
+    /* =========================================
+       CERRAR HACIENDO CLICK AFUERA
+    ========================================= */
 
     function cerrarModalFuera(event) {
 
-      if (event.target.id === "orderModal") {
+      if (
+        event.target.id === "orderModal"
+      ) {
+
         cerrarPedido();
+
       }
 
     }
 
 
-    /*
-      ============================================
-      ACTUALIZAR PRECIO
-      ============================================
-    */
+    /* =========================================
+       ACTUALIZAR PRECIO DEL PEDIDO
+    ========================================= */
 
     function actualizarPrecio() {
 
       const producto =
         document.getElementById("producto").value;
+
 
       let cantidad =
         Number(
@@ -1148,7 +1224,7 @@
 
 
       precioActual =
-        precios[producto] || 0;
+        preciosActuales[producto];
 
 
       const total =
@@ -1163,22 +1239,40 @@
     }
 
 
-    /*
-      ============================================
-      CONSULTA RÁPIDA POR WHATSAPP
-      ============================================
-    */
+    /* =========================================
+       CAMBIAR PRODUCTO
+    ========================================= */
 
-    function consultarWhatsApp(producto, precio) {
+    document
+      .getElementById("producto")
+      .addEventListener(
+        "change",
+        actualizarPrecio
+      );
+
+
+    /* =========================================
+       CONSULTAR POR WHATSAPP
+    ========================================= */
+
+    function consultarWhatsApp(
+      producto,
+      precio
+    ) {
+
+      const precioReal =
+        preciosActuales[producto] || precio;
+
 
       const mensaje =
 
 `🛒 *CONSULTA - VENSUR*
 
 📦 *Producto:* ${producto}
-💰 *Precio:* $${precio.toLocaleString("es-AR")}
+💰 *Precio:* $${precioReal.toLocaleString("es-AR")}
 
 ¡Hola! Quería consultar por este producto.`;
+
 
       const url =
         "https://wa.me/" +
@@ -1187,121 +1281,155 @@
         encodeURIComponent(mensaje);
 
 
-      window.open(url, "_blank");
+      window.open(
+        url,
+        "_blank"
+      );
 
     }
 
 
-    /*
-      ============================================
-      ENVIAR PEDIDO COMPLETO A WHATSAPP
-      ============================================
-    */
+    /* =========================================
+       ENVIAR PEDIDO
+    ========================================= */
 
     document
       .getElementById("orderForm")
-      .addEventListener("submit", function(event) {
+      .addEventListener(
+        "submit",
+        function(event) {
 
-        event.preventDefault();
-
-
-        const producto =
-          document.getElementById("producto").value;
+          event.preventDefault();
 
 
-        const modelo =
-          document.getElementById("modelo").value;
+          const producto =
+            document
+              .getElementById("producto")
+              .value;
 
 
-        const color =
-          document.getElementById("color").value;
+          const modelo =
+            document
+              .getElementById("modelo")
+              .value;
 
 
-        const cantidad =
-          Number(
-            document.getElementById("cantidad").value
-          );
+          const color =
+            document
+              .getElementById("color")
+              .value;
 
 
-        const encuentro =
-          document
-            .getElementById("encuentro")
-            .value
-            .trim();
+          const cantidad =
+            Number(
+              document
+                .getElementById("cantidad")
+                .value
+            );
 
 
-        const observaciones =
-          document
-            .getElementById("observaciones")
-            .value
-            .trim();
+          const encuentro =
+            document
+              .getElementById("encuentro")
+              .value
+              .trim();
 
 
-        const total =
-          precioActual * cantidad;
+          const observaciones =
+            document
+              .getElementById("observaciones")
+              .value
+              .trim();
 
 
-        /*
-          MENSAJE
-        */
+          const precio =
+            preciosActuales[producto];
 
-        let mensaje =
+
+          const precioOriginal =
+            preciosOriginales[producto];
+
+
+          const total =
+            precio * cantidad;
+
+
+          const tieneDescuento =
+            descuentosAplicados[producto];
+
+
+          let mensaje =
 
 `🛒 *NUEVO PEDIDO - VENSUR*
 
 📦 *Producto:* ${producto}
 🔧 *Modelo:* ${modelo}
 🎨 *Color:* ${color}
-🔢 *Cantidad:* ${cantidad}
+🔢 *Cantidad:* ${cantidad}`;
+
+
+          if (tieneDescuento) {
+
+            mensaje +=
+
+`
+
+🏷️ *Descuento:* 20% OFF
+💵 *Precio original:* $${precioOriginal.toLocaleString("es-AR")}
+💚 *Precio con descuento:* $${precio.toLocaleString("es-AR")}`;
+
+          }
+
+
+          mensaje +=
+
+`
 
 📍 *Punto de encuentro:*
 ${encuentro}
 
-💰 *Total:* $${total.toLocaleString("es-AR")}`;
+💰 *TOTAL:* $${total.toLocaleString("es-AR")}`;
 
 
-        if (observaciones !== "") {
+          if (
+            observaciones !== ""
+          ) {
 
-          mensaje +=
+            mensaje +=
 
 `
 
 📝 *Observaciones:*
 ${observaciones}`;
 
-        }
+          }
 
 
-        mensaje += `
+          mensaje += `
 
 ¡Hola! Quiero realizar este pedido.`;
 
 
-        /*
-          URL WHATSAPP
-        */
-
-        const url =
-          "https://wa.me/" +
-          WHATSAPP_NUMBER +
-          "?text=" +
-          encodeURIComponent(mensaje);
+          const url =
+            "https://wa.me/" +
+            WHATSAPP_NUMBER +
+            "?text=" +
+            encodeURIComponent(
+              mensaje
+            );
 
 
-        /*
-          ABRIR WHATSAPP
-        */
+          window.open(
+            url,
+            "_blank"
+          );
 
-        window.open(url, "_blank");
-
-      });
+        });
 
 
-    /*
-      ============================================
-      BUSCADOR
-      ============================================
-    */
+    /* =========================================
+       BUSCADOR
+    ========================================= */
 
     function buscarProductos() {
 
@@ -1314,109 +1442,59 @@ ${observaciones}`;
 
 
       const productos =
-        document.querySelectorAll(".product");
+        document.querySelectorAll(
+          ".product"
+        );
 
 
-      let encontrados = 0;
+      productos.forEach(
+        producto => {
+
+          const nombre =
+            producto
+              .dataset
+              .name
+              .toLowerCase();
 
 
-      productos.forEach(producto => {
+          if (
+            nombre.includes(texto)
+          ) {
 
-        const nombre =
-          producto
-            .dataset
-            .name
-            .toLowerCase();
+            producto.style.display =
+              "";
 
+          } else {
 
-        if (nombre.includes(texto)) {
+            producto.style.display =
+              "none";
 
-          producto.style.display = "";
-          encontrados++;
-
-        } else {
-
-          producto.style.display = "none";
+          }
 
         }
-
-      });
-
-
-      document
-        .getElementById("productsCount")
-        .textContent =
-        encontrados +
-        (encontrados === 1
-          ? " producto"
-          : " productos");
-
-
-      const noResults =
-        document.getElementById("noResults");
-
-
-      if (encontrados === 0) {
-
-        noResults.style.display = "block";
-
-      } else {
-
-        noResults.style.display = "none";
-
-      }
+      );
 
     }
 
 
-    /*
-      ============================================
-      ESCAPE PARA CERRAR
-      ============================================
-    */
+    /* =========================================
+       ESCAPE PARA CERRAR MODAL
+    ========================================= */
 
     document.addEventListener(
       "keydown",
       function(event) {
 
-        if (event.key === "Escape") {
+        if (
+          event.key === "Escape"
+        ) {
+
           cerrarPedido();
+
         }
 
       }
     );
-
-
-    /*
-      ============================================
-      EVITAR SCROLL DEL FONDO CON MODAL ABIERTO
-      ============================================
-    */
-
-    const modal =
-      document.getElementById("orderModal");
-
-
-    const observer =
-      new MutationObserver(() => {
-
-        if (modal.classList.contains("active")) {
-
-          document.body.style.overflow = "hidden";
-
-        } else {
-
-          document.body.style.overflow = "";
-
-        }
-
-      });
-
-
-    observer.observe(modal, {
-      attributes: true,
-      attributeFilter: ["class"]
-    });
 
   </script>
 
